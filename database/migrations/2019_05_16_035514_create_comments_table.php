@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslateGroupMangasTable extends Migration
+class CreateCommentsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,13 @@ class CreateTranslateGroupMangasTable extends Migration
      */
     public function up()
     {
-        Schema::create('manga_translate_group', function (Blueprint $table) {
+        Schema::create('comments', function (Blueprint $table) {
             $table->increments('id');
+            $table->unsignedInteger('user_id');
+            $table->integer('type');
             $table->unsignedInteger('manga_id');
-            $table->unsignedInteger('group_id');
+            $table->unsignedInteger('chapter_id');
+            $table->text('content');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ class CreateTranslateGroupMangasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manga_translate_group');
+        Schema::dropIfExists('comments');
     }
 }

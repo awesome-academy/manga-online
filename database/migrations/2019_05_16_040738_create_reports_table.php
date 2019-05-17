@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateTranslateGroupMangasTable extends Migration
+class CreateReportsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,11 @@ class CreateTranslateGroupMangasTable extends Migration
      */
     public function up()
     {
-        Schema::create('manga_translate_group', function (Blueprint $table) {
+        Schema::create('reports', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('manga_id');
-            $table->unsignedInteger('group_id');
+            $table->integer('report_type');
+            $table->text('report_content');
+            $table->unsignedInteger('user_id');
             $table->timestamps();
         });
     }
@@ -28,6 +29,6 @@ class CreateTranslateGroupMangasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('manga_translate_group');
+        Schema::dropIfExists('reports');
     }
 }
