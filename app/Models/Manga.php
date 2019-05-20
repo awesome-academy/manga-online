@@ -19,4 +19,27 @@ class Manga extends Model
         'rate',
         'total_rate',
     ];
+
+    public function authors()
+    {
+        return $this->belongsToMany('App\Models\Author', 'author_manga');
+    }
+
+    public function categories()
+    {
+        return $this->belongsToMany('App\Models\Category', 'category_manga');
+    }
+
+    public function translateGroups()
+    {
+        return $this->belongsToMany('App\Models\TranslateGroup', 'manga_translate_group');
+    }
+
+    public function chapters(){
+        return $this->hasMany('App\Models\Chapter');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Models\Comment');
+    }
 }

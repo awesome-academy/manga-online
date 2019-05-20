@@ -14,4 +14,12 @@ class Chapter extends Model
         'slug',
         'manga_id',
     ];
+
+    public function chapterDetail(){
+        return $this->hasOne('App\Models\ChapterDetail');
+    }
+
+    public function comments(){
+        return $this->hasMany('App\Models\Comment');
+    }
 }

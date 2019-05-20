@@ -15,4 +15,9 @@ class Author extends Model
         'meta_description',
         'meta_keywords',
     ];
+
+    public function mangas()
+    {
+        return $this->belongsToMany('App\Models\Manga', 'author_manga');
+    }
 }

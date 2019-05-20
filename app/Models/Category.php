@@ -14,4 +14,9 @@ class Category extends Model
         'meta_description',
         'meta_keywords',
     ];
+
+    public function mangas()
+    {
+        return $this->belongsToMany('App\Models\Manga', 'category_manga');
+    }
 }
