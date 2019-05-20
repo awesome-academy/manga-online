@@ -1,0 +1,20 @@
+{
+  "name": "manga-online",
+  "description": "",
+  "main": "",
+  "authors": [
+    "thien181996 <thien181996@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/thien181996/manga-online",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "metronic-theme": "metronic-nt#*"
+  }
+}
