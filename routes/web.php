@@ -11,6 +11,6 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+use App\Http\Controllers\Admin\Auth\RegisterController;
+
+Route::get('/admin/login', [RegisterController::class, 'index'])->name('admin.login');

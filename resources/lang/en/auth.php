@@ -13,7 +13,22 @@ return [
     |
     */
 
-    'failed' => 'These credentials do not match our records.',
-    'throttle' => 'Too many login attempts. Please try again in :seconds seconds.',
+    'title' => 'Login to Admin',
+    'remember' => 'Remember me',
+    'forget_password' => 'Forget password',
+    'sign_in' => 'Sign in',
+    'sign_up' => 'Sign up',
+    'sign_up_desc' => 'Enter your details to create your account',
+    'agree_term' => 'I agree the',
+    'terms_and_conditions' => 'Terms and conditions',
+    'cancel' => 'Cancel',
+    'forgotten_title' => 'Forgotten Password?',
+    'forgotten_desc' => 'Enter your email to reset your password',
+    'request' => 'Request',
+    'forgotten_msg_1' => 'Don\'t have an account yet?',
+    'email_plh' => 'Email',
+    'password_plh' => 'Password',
+    'password_re_plh' => 'Confirm password',
+    'fullname_plh' => 'Fullname',
 
 ];
