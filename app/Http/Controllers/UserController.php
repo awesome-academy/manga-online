@@ -35,15 +35,11 @@ class UserController extends Controller
         })
         ->editColumn('fullname', function($user) {
 
-            return str_limit($user->fullname, 30, ' ...');
+            return str_limit($user->fullname, config('assets.legth_name'), ' ...');
         })
         ->editColumn('created_at', function($user) {
 
              return $user->created_at->format('Y-m-d');
-        })
-        ->editColumn('updated_at', function($user) {
-
-             return $user->updated_at->format('Y-m-d');
         })
         ->editColumn('avatar', function($user) {
             if (isset($user->avatar)) {
@@ -59,7 +55,7 @@ class UserController extends Controller
         })
         ->editColumn('status', function($user) {
             $checked = '';
-            if ($user->status == 1) {
+            if ($user->status == config('assets.is_active')) {
                 $checked = 'checked';
             }
 
@@ -76,7 +72,7 @@ class UserController extends Controller
     public function updateStatus($id) {
         $result = $this->userRepository->updateStatus($id);
 
-        if ($result == 1) {
+        if ($result == config('assets.is_active')) {
             $msg = __('trans.Open account successfully');
         } else {
             $msg = __('trans.Lock account successful');
@@ -88,7 +84,7 @@ class UserController extends Controller
         ]);  
     }
 
-    public function deleteStatus($id) {
+    public function delete($id) {
         $result = $this->userRepository->delete($id);
 
         return response()->json();

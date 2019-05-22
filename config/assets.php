@@ -17,4 +17,6 @@ return [
     'style_css' => '/assets/demo/default/base/style.bundle.css',
     'avatar_default' => '/images/avatar_default.png',
     'storage' => '/storage',
+    'legth_name' => 30,
+    'is_active' => 1,
 ];

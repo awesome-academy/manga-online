@@ -36,7 +36,7 @@ class UserRepository extends BaseRepository
         $data['password'] = bcrypt($request->password1_add);
         $data['status'] = 1;
         $data['role_id'] = $request->role;
-        $user = \App\Models\User::create($data);
+        $user = User::create($data);
 
         return $user;
     }
