@@ -31,6 +31,9 @@
     <!--end::Page Vendors Styles -->
     <link rel="shortcut icon"
           href="{{ asset(config('assets.path_bower').config('assets.favicon')) }}"/>
+    <link href="{{ asset('/bower_components/datatables.net-dt/css/jquery.dataTables.min.css') }}"
+          rel="stylesheet" type="text/css"/>
+    @yield('head')
 </head>
 
 <!-- end::Head -->
@@ -53,18 +56,18 @@
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
 
             <!-- BEGIN: Subheader -->
-            <div class="m-subheader ">
+            <!-- <div class="m-subheader ">
                 <div class="d-flex align-items-center">
                     <div class="mr-auto">
                         <h3 class="m-subheader__title ">@yield('title')</h3>
                     </div>
                 </div>
-            </div>
+            </div> -->
 
             <!-- END: Subheader -->
             <div class="m-content">
-                @section('content')
-                @show
+                @yield('content')
+                
             </div>
         </div>
     </div>
@@ -85,7 +88,7 @@
 </div>
 
 <!-- end::Scroll Top -->
-
+<script src="{{ asset('/bower_components/jquery/dist/jquery.js') }}"></script>
 <!--begin::Global Theme Bundle -->
 <script src="{{ asset(config('assets.path_bower').config('assets.vendors_js')) }}"
         type="text/javascript"></script>
@@ -104,6 +107,9 @@
 <script src="{{ asset(config('path_bower').'/assets/app/js/dashboard.js') }}"
         type="text/javascript"></script>
 
+<script src="{{ asset('/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"
+        type="text/javascript"></script>
+@yield('footer')
 <!--end::Page Scripts -->
 </body>
 

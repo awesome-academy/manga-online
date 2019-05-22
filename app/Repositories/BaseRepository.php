@@ -39,7 +39,7 @@ abstract class BaseRepository
      */
     public function getAll()
     {
-        return $this->_model->all();
+        return $this->_model::orderBy('id', 'desc')->get();
     }
 
     /**
@@ -49,7 +49,7 @@ abstract class BaseRepository
      */
     public function find($id)
     {
-        $result = $this->_model->find($id);
+        $result = $this->_model->findOrfail($id);
 
         return $result;
     }
@@ -72,7 +72,7 @@ abstract class BaseRepository
      */
     public function update($id, array $attributes)
     {
-        $result = $this->find($id);
+        $result = $this->findOrfail($id);
         if ($result) {
             $result->update($attributes);
 
