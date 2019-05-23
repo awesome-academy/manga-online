@@ -72,7 +72,7 @@ abstract class BaseRepository
      */
     public function update($id, array $attributes)
     {
-        $result = $this->findOrfail($id);
+        $result = $this->find($id);
         if ($result) {
             $result->update($attributes);
 
