@@ -5,8 +5,8 @@
 @endsection
 
 @section('content')
-<div>
-    <div>
+<div class="m-portlet">
+    <div class="m-portlet__body">
         <a class="btn btn-primary" data-toggle="modal" href='#modal-add'>{{ __('trans.Add category') }}</a><br><br>
         <table class="table table-striped table-bordered table-hover table-checkable order-column" id="categories-table">
             <thead>

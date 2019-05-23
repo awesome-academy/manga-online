@@ -19,4 +19,5 @@ return [
     'storage' => '/storage',
     'legth_name' => 30,
     'is_active' => 1,
+    'legth_content' => 150,
 ];

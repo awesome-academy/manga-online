@@ -117,6 +117,8 @@
         }
     });
 </script>
+<script src="{{ asset('/bower_components/ckeditor/ckeditor.js') }}"
+        type="text/javascript"></script>
 @yield('footer')
 <!--end::Page Scripts -->
 </body>

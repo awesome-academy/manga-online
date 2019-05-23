@@ -38,7 +38,7 @@ class CategoryController extends Controller
         })
         ->editColumn('created_at', function($category) {
 
-             return $category->created_at->format('Y-m-d');
+            return $category->created_at->format('Y-m-d');
         })
         ->rawColumns(['action'])
         ->make(true);
@@ -49,17 +49,17 @@ class CategoryController extends Controller
 
         return response()->json([
             'error' => false,
-            'mesage' => __('trans.Delete success'),
+            'message' => __('trans.Delete success'),
         ]);
     }
 
     public function store(Request $request){
-		$result = $this->categoryRepository->create($request->all());
+        $result = $this->categoryRepository->create($request->all());
 
         return response()->json([
             'error' => false,
-            'mesage' => __('trans.Add success category'),
-        ]);    	
+            'message' => __('trans.Add success category'),
+        ]);
     }
 
     public function edit($id) {
@@ -70,11 +70,10 @@ class CategoryController extends Controller
 
     public function update(Request $request) {
         $result = $this->categoryRepository->update($request->id, $request->all());
-        
+    
         return response()->json([
             'error' => false,
-            'mesage' => __('trans.Edit success'),
+            'message' => __('trans.Edit success'),
         ]);
     }
-
 }

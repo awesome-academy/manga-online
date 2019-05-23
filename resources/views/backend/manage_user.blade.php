@@ -5,10 +5,10 @@
 @endsection
 
 @section('content')
-<div>
-    <div>
+<div class="m-portlet">
+    <div class="m-portlet__body">
         <a class="btn btn-primary" data-toggle="modal" href='#modal-add'>{{ __('trans.Add user') }}</a><br><br>
-        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="users-table" style="width:100%">
+        <table class="table table-striped table-bordered table-hover table-checkable order-column" id="users-table">
             <thead>
                 <tr>
                     <th class="stl-column color-column">{{ __('trans.Acction') }}</th>
@@ -32,7 +32,7 @@
                 <div class="modal-body">
                     <form method="POST" action="" id="user_add" role="form" data-toggle="validator"enctype="multipart/form-data">
                         <div class="modal-body">
-                            <h2 style="text-align: center;">{{ __('trans.Add user') }}</h2>
+                            <h2 class="text-center" >{{ __('trans.Add user') }}</h2>
                             @csrf
                             <br>
                             <div id="prod-error-add" class="text-center">
@@ -105,7 +105,7 @@
                 <div class="modal-body">
                     <form method="POST" action="" id="user_edit" role="form" data-toggle="validator"enctype="multipart/form-data">
                         <div class="modal-body">
-                            <h2 style="text-align: center;">{{ __('trans.Edit user') }}</h2>
+                            <h2 class="text-center">{{ __('trans.Edit user') }}</h2>
                             @csrf
                             <br>
                             <div class="container-fluid">
@@ -268,7 +268,7 @@
             success: function (data) {
                 $('#modal-add').modal('hide');
                 $('#users-table').DataTable().ajax.reload();
-                swal( data.mesage , {
+                swal( data.message , {
                     icon: "success",
                 });                     
             },
@@ -317,7 +317,7 @@
                 else {
                     $('#modal-edit').modal('hide');
                     $('#users-table').DataTable().ajax.reload();
-                    swal( data.mesage , {
+                    swal( data.message , {
                         icon: "success",
                     });                     
                 }
