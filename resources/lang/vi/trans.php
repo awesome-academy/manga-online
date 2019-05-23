@@ -33,4 +33,13 @@ return [
     'Email' => 'Email',
     'Save' => 'Lưu',
     'Edit success user' => 'Thêm tài khoản thành công',
+    'Email is required' => 'Email không được để rỗng',
+    'Email is unique!' => 'Email đã có người sử dụng',
+    'Email is max' => 'Email quá dài',
+    'Password is required' => 'Mật khẩu không được để rỗng',
+    'Password is too short' => 'Mật khẩu phải lớn hơn 5 ký tự',
+    'username min' => 'Tên đăng nhập phải lớn hơn 5 ký tự',
+    'username required' => 'Tên đăng nhập không được rỗng ',
+    'fullname min' => 'Họ tên phải lớn hơn 5 ký tự',
+    'fullname required' => 'Họ tên không được rỗng ',
 ];

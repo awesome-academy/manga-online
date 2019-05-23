@@ -266,23 +266,18 @@
             contentType: false,
             processData: false,
             success: function (data) {
-                if (data.error) {
-                    jQuery.each(data.message, function(key, value){
-                        toastr.error(value) 
-                    }); 
-                }
-                else {
-                    $('#modal-add').modal('hide');
-                    $('#users-table').DataTable().ajax.reload();
-                    swal( data.mesage , {
-                        icon: "success",
-                    });                     
-                }
+                $('#modal-add').modal('hide');
+                $('#users-table').DataTable().ajax.reload();
+                swal( data.mesage , {
+                    icon: "success",
+                });                     
             },
-            error: function (error) {
-                toastr.error(error.message);
+            error: function (data) {
+                jQuery.each(data.responseJSON.errors, function(key, value){
+                    toastr.error(value) 
+                }); 
             }
-        });
+        })
     });
 
     function edit($id){

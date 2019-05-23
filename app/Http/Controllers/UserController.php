@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use Yajra\Datatables\Datatables;
+use App\Http\Requests\UserRequest;
 
 class UserController extends Controller
 {
@@ -93,7 +94,7 @@ class UserController extends Controller
         return response()->json();
     }
     
-    public function store(Request $request) {
+    public function store(UserRequest $request) {
         $result = $this->userRepository->store($request);
 
         return response()->json([
