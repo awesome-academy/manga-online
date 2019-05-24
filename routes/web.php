@@ -12,6 +12,7 @@
 */
 
 use App\Http\Controllers\Admin\Auth\RegisterController;
+use App\Http\Controllers\Admin\HomeController;
 
 Route::get('/admin/login', [RegisterController::class, 'index'])->name('admin.login');
 
@@ -29,3 +30,7 @@ Route::get('/category/delete/{id}', 'CategoryController@delete')->name('category
 Route::post('/category/store', 'CategoryController@store')->name('category.store');
 Route::get('/category/{id}/edit', 'CategoryController@edit')->name('category.edit');
 Route::post('/category/update', 'CategoryController@update')->name('category.update');
+
+Auth::routes();
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/js/lang.js', [HomeController::class, 'exportJs'])->name('admin.lang');

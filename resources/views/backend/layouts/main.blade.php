@@ -33,6 +33,7 @@
           href="{{ asset(config('assets.path_bower').config('assets.favicon')) }}"/>
     <link href="{{ asset('/bower_components/datatables.net-dt/css/jquery.dataTables.min.css') }}"
           rel="stylesheet" type="text/css"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('head')
 </head>
 
@@ -104,11 +105,18 @@
 <!--end::Page Vendors -->
 
 <!--begin::Page Scripts -->
-<script src="{{ asset(config('path_bower').'/assets/app/js/dashboard.js') }}"
+<script src="{{ asset(config('assets.path_bower') . '/assets/app/js/dashboard.js') }}"
         type="text/javascript"></script>
 
 <script src="{{ asset('/bower_components/datatables.net/js/jquery.dataTables.min.js') }}"
         type="text/javascript"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 @yield('footer')
 <!--end::Page Scripts -->
 </body>
