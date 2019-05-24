@@ -48,3 +48,6 @@ Route::get('/chapter/getlist/{id}', 'ChapterController@getlist')->name('chapter.
 Route::post('/chapter/store', 'ChapterController@store')->name('chapter.store');
 Route::get('/chapter/delete/{id}', 'ChapterController@delete')->name('chapter.delete');
 Route::get('/chapter/status/{id}', 'ChapterController@updateStatus')->name('chapter.status');
+Route::get('/role', 'RoleController@index')->name('role.index');
+Route::get('/role/getlist', 'RoleController@getlist')->name('role.getlist');
+Route::post('/role/permission', 'RoleController@addpermisson')->name('role.addpermisson');
