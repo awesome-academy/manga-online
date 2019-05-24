@@ -34,3 +34,17 @@ Route::post('/category/update', 'CategoryController@update')->name('category.upd
 Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/js/lang.js', [HomeController::class, 'exportJs'])->name('admin.lang');
+
+Route::get('/manga', 'MangaController@index')->name('manga.index');
+Route::get('/manga/getlist', 'MangaController@getlist')->name('manga.getlist');
+Route::post('/manga/store', 'MangaController@store')->name('manga.store');
+Route::get('/manga/delete/{id}', 'MangaController@delete')->name('manga.delete');
+Route::get('/manga/status/{id}', 'MangaController@updateStatus')->name('manga.status');
+Route::get('/manga/{id}/edit', 'MangaController@edit')->name('manga.edit');
+Route::post('/manga/update', 'MangaController@update')->name('manga.update');
+
+Route::get('/manga/{id}', 'ChapterController@index')->name('manga.index');
+Route::get('/chapter/getlist/{id}', 'ChapterController@getlist')->name('chapter.getlist');
+Route::post('/chapter/store', 'ChapterController@store')->name('chapter.store');
+Route::get('/chapter/delete/{id}', 'ChapterController@delete')->name('chapter.delete');
+Route::get('/chapter/status/{id}', 'ChapterController@updateStatus')->name('chapter.status');

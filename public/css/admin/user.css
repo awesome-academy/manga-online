@@ -57,3 +57,6 @@ input:checked + .slider:before {
 .clred{
     color: red;
 }
+.dp-node{
+    display: none;
+}

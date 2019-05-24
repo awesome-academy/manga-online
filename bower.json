@@ -17,6 +17,7 @@
   "dependencies": {
     "metronic-theme": "metronic-nt#*",
     "datatables.net": "^1.10.19",
-    "datatables.net-dt": "^3.2.2"
+    "datatables.net-dt": "^3.2.2",
+    "ckeditor": "https://github.com/ckeditor/ckeditor-releases.git#^4.11.4"
   }
 }

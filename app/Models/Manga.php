@@ -18,6 +18,7 @@ class Manga extends Model
         'meta_keywords',
         'rate',
         'total_rate',
+        'image',
     ];
 
     public function authors()

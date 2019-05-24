@@ -60,7 +60,7 @@ function deleteCategory($id){
                 type: 'get',
                 url: '/category/delete/' + $id,
                 success: function(data) {
-                    swal(data.mesage, {
+                    swal(data.message, {
                         icon: "success",
                     });
                     $('#categories-table').DataTable().ajax.reload();
@@ -87,7 +87,7 @@ $('#category_add').on('submit', function(e){
             } else {
                 $('#modal-add').modal('hide');
                 $('#categories-table').DataTable().ajax.reload();
-                swal(data.mesage, {
+                swal(data.message, {
                     icon: "success",
                 });                     
             }
@@ -132,7 +132,7 @@ $('#category_edit').on('submit', function(e){
             else {
                 $('#modal-edit').modal('hide');
                 $('#categories-table').DataTable().ajax.reload();
-                swal( data.mesage, {
+                swal( data.message, {
                     icon: "success",
                 });                     
             }

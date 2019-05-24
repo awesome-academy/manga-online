@@ -95,7 +95,7 @@ class UserController extends Controller
 
         return response()->json([
             'error' => false,
-            'mesage' => __('trans.Add success user'),
+            'message' => __('trans.Add success user'),
         ]);
     }
 
@@ -110,7 +110,7 @@ class UserController extends Controller
 
         return response()->json([
             'error' => false,
-            'mesage' => __('trans.Edit success user'),
+            'message' => __('trans.Edit success user'),
         ]);
     }
 }
