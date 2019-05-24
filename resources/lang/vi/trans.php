@@ -63,4 +63,10 @@ return [
     'Name chapter' => 'Tên chương',
     'Content' => 'Nội dung',
     'Add chapter' => 'Thêm chương',    
+    'Name role' => 'Chức vụ',
+    'List Permission' => 'Danh sách quyền',
+    'Add role' => 'Thêm chức vụ',
+    'Add Permission' => 'Thêm quyền',
+    'Add permission error' => 'Quyền này đã được cấp',
+    'Add permission success' => 'Cấp quyền thành công',
 ];
