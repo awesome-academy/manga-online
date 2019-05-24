@@ -27,16 +27,26 @@ var SnippetLogin = function () {
                 l.validate({
                     rules: {
                         email: {required: !0, email: !0},
-                        password: {required: !0}
+                        password: {required: !0},
+                    },
+                    messages: {
+                        email: {required: i18n.validate.required, email: i18n.validate.email},
+                        password: {required: i18n.validate.required},
                     }
                 }),
                 l.valid() && (a.addClass("m-loader m-loader--right m-loader--light").attr("disabled", !0),
                     l.ajaxSubmit({
-                        url: "",
+                        url: l.attr('action'),
                         success: function (e, t, r, s) {
-                            setTimeout(function () {
-                                a.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1), i(l, "danger", "Incorrect username or password. Please try again.")
-                            }, 2e3)
+                            if (e.status === 'success') {
+                                location.href = e.redirectTo;
+                            }
+                        },
+                        error: function (x, s, e) {
+                            if (x.status === 422) {
+                                i(l, "danger", "Thông tin nhập không chính xác.");
+                                a.removeClass("m-loader m-loader--right m-loader--light").attr("disabled", !1)
+                            }
                         }
                     }))
             }), $("#m_login_signup_submit").click(function (l) {
