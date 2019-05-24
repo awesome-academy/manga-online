@@ -27,6 +27,7 @@
     <!--end::Global Theme Styles -->
     <link rel="shortcut icon"
           href="{{ asset(config('assets.path_bower').config('assets.favicon')) }}"/>
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
 </head>
 
 <!-- end::Head -->
@@ -80,9 +81,12 @@
                         <h3 class="m-login__title">@lang('auth.sign_up')</h3>
                         <div class="m-login__desc">@lang('auth.sign_up_desc')</div>
                     </div>
-                    <form class="m-login__form m-form" action="">
+                    <form class="m-login__form m-form" action="{{ route('register') }}" method="post">
                         <div class="form-group m-form__group">
                             <input class="form-control m-input" type="text" placeholder="@lang('auth.fullname_plh')" name="fullname">
+                        </div>
+                        <div class="form-group m-form__group">
+                            <input class="form-control m-input" type="text" placeholder="@lang('auth.username_plh')" name="username">
                         </div>
                         <div class="form-group m-form__group">
                             <input class="form-control m-input" type="text" placeholder="@lang('auth.email_plh')" name="email"
@@ -93,7 +97,7 @@
                         </div>
                         <div class="form-group m-form__group">
                             <input class="form-control m-input m-login__form-input--last" type="password"
-                                   placeholder="@lang('auth.password_re_plh')" name="rpassword">
+                                   placeholder="@lang('auth.password_re_plh')" name="password_confirmation">
                         </div>
                         <div class="row form-group m-form__group m-login__form-sub">
                             <div class="col m--align-left">
@@ -158,7 +162,14 @@
 
 <!--begin::Page Scripts -->
 <script src="{{ asset('/js/login.js') }}" type="text/javascript"></script>
-
+<script src="{{ asset('/js/lang.js') }}" type="text/javascript"></script>
+<script type="text/javascript">
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+</script>
 <!--end::Page Scripts -->
 </body>
 

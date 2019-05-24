@@ -6,6 +6,6 @@
  * Time: 09:59
  */
 
-Route::get('/',function() {
-   return view('backend.layouts.main');
-});
+use App\Http\Controllers\Admin\HomeController;
+
+Route::get('/', [HomeController::class, 'index'])->name('admin.home');

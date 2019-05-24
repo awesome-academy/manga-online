@@ -30,5 +30,7 @@ return [
     'password_plh' => 'Nhập mật khẩu',
     'password_re_plh' => 'Nhập lại mật khẩu',
     'fullname_plh' => 'Nhập họ và tên',
-
+    'username_plh' => 'Nhập tài khoản',
+    'sign_out' => 'Đăng xuất',
+    'profile' => 'Hồ sơ cá nhân'
 ];
