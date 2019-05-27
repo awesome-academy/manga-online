@@ -15,10 +15,6 @@ class PermissionsTableSeeder extends Seeder
         \DB::table('permissions')->truncate();
 
         Permission::create([
-            'code' => 'superadmin',
-            'title' => 'Full quyền ',
-        ]);
-        Permission::create([
             'code' => 'manage-user',
             'title' => 'Quyền quản lý user',    
         ]);
@@ -26,5 +22,22 @@ class PermissionsTableSeeder extends Seeder
             'code' => 'manage-manga',
             'title' => 'Quyền quản lý truyện',      
         ]);
+        Permission::create([
+            'code' => 'manage-report',
+            'title' => 'Quyền quản lý report',      
+        ]);
+        Permission::create([
+            'code' => 'manage-category',
+            'title' => 'Quyền quản lý truyện',      
+        ]);
+        Permission::create([
+            'code' => 'manage-role',
+            'title' => 'Phân quyền',      
+        ]);
+        Permission::create([
+            'code' => 'manage-reader',
+            'title' => 'Độc giả',      
+        ]);
+        
     }
 }

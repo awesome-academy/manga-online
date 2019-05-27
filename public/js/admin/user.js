@@ -155,8 +155,10 @@ $('#user_edit').on('submit',function(e){
                 });                     
             }
         },
-        error: function (error) {
-            toastr.error(error.message);
+        error: function (data) {
+            jQuery.each(data.responseJSON.errors, function(key, value){
+                toastr.error(value) 
+            });
         }
     });
 });
