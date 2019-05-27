@@ -12,10 +12,12 @@ $('#avatar').change(function () {
         reader.readAsDataURL(this.files[0]);
     }
 })
+
 // upload image edit
 $('#avatar_show_edit').on('click',function(){
     $('#avatar_edit').click();
 })
+
 $('#avatar_edit').change(function () {
     if ($(this).val() != '') {
         var reader = new FileReader();
@@ -27,81 +29,31 @@ $('#avatar_edit').change(function () {
 })
 
 $(function() {
-    $('#mangas-table').DataTable({
+    $('#users-table').DataTable({
         processing: true,
         serverSide: true,
         ordering: false,
         ajax: {
-            url:'/admin/manga/getlist',
+            url:'/admin/user/getlist',
         },
         columns: [
-        {
-            data: 'id',
-            name: 'id' ,
-            render: function (data, type, row) {
-
-            return  '<a href="#" class="btn btn-xs btn-warning" data-toggle="tooltip" title="Sửa" onclick="edit(' + data + ');"><i class="fas fa-edit"></i></a>' +
-                '<a href="#" class="btn btn-xs btn-danger" data-toggle="tooltip" title="Xóa" onclick="deleteManga(' + data + ');"><i class="fas fa-trash"></i></a>' +
-                '<a href="' + '/admin/manga/' + data + '" class="btn btn-xs btn-default" data-toggle="tooltip" title="Chương truyện"><i class="fas fa-eye"></i></a>'
-            }
-        },
-        {
-            data: 'name',
-            name: 'name',
-            render: function (data, type, row) {
-                return data.substr(0, 30) + "...";
-            }
-        },
-        {
-            data: 'image',
-            name: 'image',
-            render: function (data, type, row) {
-                if (data != null) {
-                    return '<div class="imgList"><img width= "60px;" src="' + '/storage' + data + '" alt=""></div>';  
-                } else {
-                    return '<div class="imgList"><img width= "60px;" src="' + '/images/avatar_default.png' + '" alt=""></div>';
-                }
-            }
-        },
-        {
-            data: 'description',
-            name: 'description',
-            render: function (data, type, row) {
-                return data.substr(0, 100) + "...";
-            }
-        },
-        {
-            data: 'rate',
-            name: 'rate',
-        },
-        {
-            data: 'total_rate',
-            name: 'total_rate',
-        },
-        {
-            data: 'status',
-            name: 'status',
-            render: function (data, type, row) {
-                console.log(row);
-                $checked = '';
-                if (data == 1) {
-                    $checked = 'checked';
-                }
-
-                return '<label class="switch" onchange="updateStatus(' + row.id + ');"><input type="checkbox"' + $checked + '><span class="slider round"></span></label>';
-            }
-        },
-        {
-            data: 'view',
-            name: 'view',
-        },
+        { data: 'action', name: 'action' },
+        { data: 'username', name: 'username' },
+        { data: 'fullname', name: 'fullname' },
+        { data: 'email', name: 'email' },
+        { data: 'avatar', name: 'avatar' },
+        { data: 'role', name: 'role' },
+        { data: 'exp', name: 'exp' },
+        { data: 'point', name: 'point' },
+        { data: 'status', name: 'status' },
+        { data: 'created_at', name: 'created_at' },
         ]
     });
 });
 
 function updateStatus(id) {
     $.ajax({
-        url: '/admin/manga/status/' + id,
+        url: '/admin/user/status/' + id,
         success: function(res) {
             if (!res.error) {
                 toastr.success(res.message);
@@ -114,42 +66,41 @@ function updateStatus(id) {
     });
 }
 
-function deleteManga($id){
+function deleteUser($id){
     swal({
         title: 'Bạn có chắc muốn xóa ?',
         type: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        // confirmButtonText: __('trans.hidden manga') + "",
     }).then((result) => {
         if (result.value) {
             $.ajax({
                 type: 'get',
-                url: '/admin/manga/delete/' + $id,
+                url: '/admin/user/delete/' + $id,
                 success: function(res) {
-                    swal("Add success", {
+                    swal("Xóa Thành công", {
                         icon: "success",
                     });
-                    $('#mangas-table').DataTable().ajax.reload();
+                    $('#users-table').DataTable().ajax.reload();
                 }
             });
         }
     })
 }
 
-$('#manga_add').on('submit',function(e){
+$('#user_add').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData($(this)[0]);
     $.ajax({
-        url: "/admin/manga/store", 
+        url: "/admin/user/store", 
         data: formData,
         type: 'post',
         contentType: false,
         processData: false,
         success: function (data) {
             $('#modal-add').modal('hide');
-            $('#mangas-table').DataTable().ajax.reload();
+            $('#users-table').DataTable().ajax.reload();
             swal( data.message , {
                 icon: "success",
             });                     
@@ -166,24 +117,26 @@ function edit($id){
     $("#modal-edit").modal('show');
     $.ajax({
         type: 'get',
-        url: '/admin/manga/' + $id + '/edit',
+        url: '/admin/user/' + $id + '/edit',
         success: function(response) {
             console.log(response);
             $('#id_edit').val(response.id);
-            $('#name').val(response.name);
-            $('#cover').val(response.cover);
-            $('#rate').val(response.rate);
-            $('#description').val(response.description);
-            $('#total_rate').val(response.total_rate);             
-            $('#slug').val(response.slug);             
+            $('#fullname_edit').val(response.fullname);
+            $('#email_edit').val(response.email);
+            $('#username_edit').val(response.username);
+            $('#role_edit').val(response.role);
+            if (response.avatar != null){
+                $('#avatar_show_edit').attr('src', '/storage/' + response.avatar);
+            }                  
         }       
     });         
 }
-$('#manga_edit').on('submit',function(e){
+
+$('#user_edit').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData($(this)[0]);
     $.ajax({
-        url: "/admin/manga/update", 
+        url: "/admin/user/update", 
         data: formData,
         type: 'post',
         contentType: false,
@@ -196,7 +149,7 @@ $('#manga_edit').on('submit',function(e){
             }
             else {
                 $('#modal-edit').modal('hide');
-                $('#mangas-table').DataTable().ajax.reload();
+                $('#users-table').DataTable().ajax.reload();
                 swal( data.message , {
                     icon: "success",
                 });                     

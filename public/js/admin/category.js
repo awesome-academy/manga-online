@@ -4,7 +4,7 @@ $(function() {
         serverSide: true,
         ordering: false,
         ajax: {
-            url: '/category/getlist',
+            url: '/admin/category/getlist',
         },
         columns: [
         { data: 'action', name: 'action' },
@@ -58,7 +58,7 @@ function deleteCategory($id){
         if (result.value) {
             $.ajax({
                 type: 'get',
-                url: '/category/delete/' + $id,
+                url: '/admin/category/delete/' + $id,
                 success: function(data) {
                     swal(data.message, {
                         icon: "success",
@@ -74,7 +74,7 @@ $('#category_add').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData($(this)[0]);
     $.ajax({
-        url: '/category/store',
+        url: '/admin/category/store',
         data: formData,
         type: 'post',
         contentType: false,
@@ -102,7 +102,7 @@ function edit($id){
     $("#modal-edit").modal('show');
     $.ajax({
         type: 'get',
-        url: '/category/' + $id + '/edit',
+        url: '/admin/category/' + $id + '/edit',
         success: function(response) {
             console.log(response);
             $('#id_edit').val(response.id);
@@ -118,7 +118,7 @@ $('#category_edit').on('submit', function(e){
     e.preventDefault();
     var formData = new FormData($(this)[0]);
     $.ajax({
-        url: '/category/update', 
+        url: '/admin/category/update', 
         data: formData,
         type: 'post',
         contentType: false,
