@@ -20,7 +20,6 @@ class UsersTableSeeder extends Seeder
             'fullname' => 'Super Admin',
             'email' => 'superadmin@gmail.com',
             'password' => bcrypt('123456'),
-            'avatar' => 'avatar',
             'role_id' => 1,
             'exp' => 1,
             'point' => 1,
@@ -31,11 +30,21 @@ class UsersTableSeeder extends Seeder
             'fullname' => 'Admin',
             'email' => 'admin@gmail.com',
             'password' => bcrypt('123456'),
-            'avatar' => 'avatar',
+            'role_id' => 2,
+            'exp' => 1,
+            'point' => 1,
+            'status' => 1,      
+        ]);
+        User::create([
+            'username' => 'nguyenthinh',
+            'fullname' => 'Nguyễn Văn Thịnh',
+            'email' => 'nguyenthinhhn98@gmail.com',
+            'password' => bcrypt('123456'),
             'role_id' => 1,
             'exp' => 1,
             'point' => 1,
             'status' => 1,      
         ]);
+
     }
 }

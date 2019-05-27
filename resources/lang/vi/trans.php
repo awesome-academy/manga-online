@@ -69,4 +69,10 @@ return [
     'Add Permission' => 'Thêm quyền',
     'Add permission error' => 'Quyền này đã được cấp',
     'Add permission success' => 'Cấp quyền thành công',
+    'Dashboard' => 'Bảng điều khiển',
+    'Manage user' => 'Quản lý người dùng',
+    'Manage category' => 'Quản lý thể loại',
+    'Manage manga' => 'Quản lý truyện',
+    'Manage role' => 'Quản lý quyền',
+    'Not Permission to access' => 'Không có quyền truy cập',
 ];

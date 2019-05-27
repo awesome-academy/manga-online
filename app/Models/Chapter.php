@@ -13,6 +13,7 @@ class Chapter extends Model
         'status',
         'slug',
         'manga_id',
+        'content',
     ];
 
     public function chapterDetail(){

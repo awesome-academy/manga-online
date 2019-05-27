@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\UserRepository;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\UserRequest;
+use App\Http\Requests\UserUpdateRequest;
 
 class UserController extends Controller
 {
@@ -14,6 +15,7 @@ class UserController extends Controller
     public function __construct(UserRepository $userRepository)
     {
         $this->userRepository = $userRepository;
+        $this->middleware('auth');
     }
 
     public function index(){
@@ -105,7 +107,7 @@ class UserController extends Controller
         return $result;
     }
 
-    public function update(Request $request) {
+    public function update(UserUpdateRequest $request) {
         $result = $this->userRepository->updateUser($request);
 
         return response()->json([

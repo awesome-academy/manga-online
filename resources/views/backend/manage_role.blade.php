@@ -58,7 +58,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form method="POST" action="" id="manga_add" role="form" data-toggle="validator"enctype="multipart/form-data">
+                    <form method="POST" action="" id="role_add" role="form" data-toggle="validator"enctype="multipart/form-data">
                         <div class="modal-body">
                             <h2 class="text-center">{{ __('trans.Add role') }}</h2>
                             @csrf
@@ -66,7 +66,7 @@
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label for="">{{ __('trans.Role') }}<span class="clred"> (*) </span></label>
-                                    <input type="text" class="form-control" name="total_rate" required>
+                                    <input type="text" class="form-control" name="title" required>
                                     <div class="help-block with-errors"></div>      
                                 </div>
                             </div>
