@@ -21,12 +21,11 @@ class MangaRepository extends BaseRepository
             $data['image'] = strstr( $path, '/' );
         }
         $data['name'] = $request->name;
-        $data['rate'] = $request->rate;
-        $data['total_rate'] = $request->total_rate;
+        $data['rate'] = 0;
+        $data['total_rate'] = 0;
         $data['slug'] = str_slug($request->slug);
         $data['description'] = $request->description;
         $data['status'] = 1;
-        $data['cover'] = $request->cover;
         $manga = Manga::create($data);
 
         return $manga;
@@ -49,11 +48,8 @@ class MangaRepository extends BaseRepository
             $result->image = strstr( $path, '/' );
         }
         $result->name = $request->name;
-        $result->rate = $request->rate;
-        $result->total_rate = $request->total_rate;
-        $result->slug = $request->slug;
+        $result->slug = str_slug($request->slug);
         $result->description = $request->description;
-        $result->cover = $request->cover;
         $result->save();
 
         return $result;

@@ -1,4 +1,5 @@
 CKEDITOR.replace('content');
+CKEDITOR.replace('content_edit');
 // upload image
 $('#avatar_show_add').on('click',function(){
     $('#avatar').click();
@@ -182,24 +183,23 @@ function edit($id){
     $("#modal-edit").modal('show');
     $.ajax({
         type: 'get',
-        url: '/admin/manga/' + $id + '/edit',
+        url: '/admin/chapter/' + $id + '/edit',
         success: function(response) {
             console.log(response);
             $('#id_edit').val(response.id);
-            $('#name').val(response.name);
-            $('#cover').val(response.cover);
-            $('#rate').val(response.rate);
-            $('#description').val(response.description);
-            $('#total_rate').val(response.total_rate);             
-            $('#slug').val(response.slug);             
+            $('#name_edit').val(response.name);
+            $('#description_edit').val(response.description);         
+            $('#slug_edit').val(response.slug);             
+            CKEDITOR.instances['content_edit'].setData(response.content);             
         }       
     });         
 }
-$('#manga_edit').on('submit',function(e){
+$('#chapter_edit').on('submit',function(e){
     e.preventDefault();
     var formData = new FormData($(this)[0]);
+    formData.append('content', CKEDITOR.instances['content_edit'].getData());
     $.ajax({
-        url: "/admin/manga/update", 
+        url: "/admin/chapter/update", 
         data: formData,
         type: 'post',
         contentType: false,
@@ -212,14 +212,16 @@ $('#manga_edit').on('submit',function(e){
             }
             else {
                 $('#modal-edit').modal('hide');
-                $('#mangas-table').DataTable().ajax.reload();
+                $('#chapters-table').DataTable().ajax.reload();
                 swal( data.message , {
                     icon: "success",
                 });                     
             }
         },
-        error: function (error) {
-            toastr.error(error.message);
+        error: function (data) {
+            jQuery.each(data.responseJSON.errors, function(key, value){
+                toastr.error(value) 
+            }); 
         }
     });
 });

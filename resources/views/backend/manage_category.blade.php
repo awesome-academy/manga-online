@@ -31,27 +31,27 @@
                         @csrf
                         <div class="form-group">
                             <label for="">{{ __('trans.Name') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" onkeyup="edit_slug()" name="name" id="name_add" required>
+                            <input type="text" class="form-control" onkeyup="edit_slug()" name="name" id="name_add">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Slug') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="slug" id="slug_add"required>
+                            <input type="text" class="form-control" name="slug" id="slug_add">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Title') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="meta_title" required>
+                            <input type="text" class="form-control" name="meta_title" >
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="meta_description" required>
+                            <input type="text" class="form-control" name="meta_description">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Keywords') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="meta_keywords" required>
+                            <input type="text" class="form-control" name="meta_keywords">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="modal-footer">
@@ -75,27 +75,27 @@
                         <input type="hidden" id="id_edit" name="id">
                         <div class="form-group">
                             <label for="">{{ __('trans.Name') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" onkeyup="edit_slug()" name="name" id="name_edit" required>
+                            <input type="text" class="form-control" onkeyup="edit_slug()" name="name" id="name_edit">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Slug') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="slug" id="slug_edit"required>
+                            <input type="text" class="form-control" name="slug" id="slug_edit">
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Title') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="meta_title" id='meta_title_edit' required>
+                            <input type="text" class="form-control" name="meta_title" id='meta_title_edit'>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="meta_description" id='meta_description_edit' required>
+                            <input type="text" class="form-control" name="meta_description" id='meta_description_edit'>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="form-group">
                             <label for="">{{ __('trans.Keywords') }}<span class="clred"> (*) </span></label>
-                            <input type="text" class="form-control" name="meta_keywords" id='meta_keywords_edit' required>
+                            <input type="text" class="form-control" name="meta_keywords" id='meta_keywords_edit'>
                             <div class="help-block with-errors"></div>
                         </div>
                         <div class="modal-footer">

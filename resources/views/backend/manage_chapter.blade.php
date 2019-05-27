@@ -36,17 +36,17 @@
                             <div class="container-fluid">
                                 <div class="form-group">
                                     <label for="">{{ __('trans.Name chapter') }}<span class="clred"> (*) </span></label>
-                                    <input type="text" class="form-control" id="name" name="name" onkeyup="edit_slug()" required>
+                                    <input type="text" class="form-control" id="name" name="name" onkeyup="edit_slug()">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">{{ __('trans.Slug') }}<span class="clred"> (*) </span></label>
-                                    <input type="text" class="form-control" name="slug" id="slug_add" required>
+                                    <input type="text" class="form-control" name="slug" id="slug_add">
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
                                     <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
-                                    <textarea class="form-control" name="description" id="" cols="30" rows="3" required></textarea>
+                                    <textarea class="form-control" name="description" id="" cols="30" rows="3"></textarea>
                                     <div class="help-block with-errors"></div>
                                 </div>
                                 <div class="form-group">
@@ -66,63 +66,38 @@
             </div>
         </div>
     </div>
+
     <div class="modal fade" id="modal-edit">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-body">
-                    <form method="POST" action="" id="manga_edit" role="form" data-toggle="validator"enctype="multipart/form-data">
+                    <form method="POST" action="" id="chapter_edit" role="form" data-toggle="validator"enctype="multipart/form-data">
                         <div class="modal-body">
-                            <h2 class="text-center">{{ __('trans.Edit manga') }}</h2>
+                            <h2 class="text-center">{{ __('trans.Edit chapter') }}</h2>
                             @csrf
                             <br>
                             <div class="container-fluid">
-                                <div class="row">
-                                    <div class="col-md-4">
-                                        <input type="hidden" id="id_edit" name="id">
-                                        <div class="form-group">
-                                            <img class="width150" id="avatar_show_edit" src="{{ asset(config('assets.avatar_default')) }}">
-                                            <label for="avatar">{{ __('trans.Select image') }}</label>
-                                            <div style="display: none">
-                                                <input type="file" id="avatar_edit" name="image"/>
-                                            </div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">{{ __('trans.Rate') }}<span class="clred"> (*) </span></label>
-                                            <input type="text" class="form-control" name="rate" id="rate" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">{{ __('trans.Total Rate') }}<span class="clred"> (*) </span></label>
-                                            <input type="text" class="form-control" name="total_rate" id="total_rate"
-                                            required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-8">
-                                        <div id="form-step-0" role="form" data-toggle="validator">
-                                            <div class="form-group">
-                                                <label for="">{{ __('trans.Name manga') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" id="name" name="name" required>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">{{ __('trans.Slug') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" id="slug" name="slug" required>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
-                                                <textarea class="form-control" id="description" name="description" id="" cols="30" rows="10" required></textarea>
-                                                <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">{{ __('trans.Cover') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" id="cover" name="cover" required>
-                                                <div class="help-block with-errors"></div>
-                                            </div>   
-                                        </div>
-                                    </div>       
+                                <div class="form-group">
+                                    <label for="">{{ __('trans.Name chapter') }}<span class="clred"> (*) </span></label>
+                                    <input type="text" class="form-control" id="name_edit" name="name" onkeyup="edit_slug()">
+                                    <div class="help-block with-errors"></div>
                                 </div>
+                                <div class="form-group">
+                                    <label for="">{{ __('trans.Slug') }}<span class="clred"> (*) </span></label>
+                                    <input type="text" class="form-control" name="slug" id="slug_edit">
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
+                                    <textarea class="form-control" name="description" id="description_edit" cols="30" rows="3"></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">{{ __('trans.Content') }}<span class="clred"> (*) </span></label>
+                                    <textarea class="form-control " id="content_edit"></textarea>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                                <input type="hidden" name="id" id="id_edit">
                             </div>
                         </div>
                         <div class="modal-footer">

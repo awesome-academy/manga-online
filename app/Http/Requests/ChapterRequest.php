@@ -1,10 +1,7 @@
 <?php
-
-namespace App\Http\Requests;
-
-use Illuminate\Foundation\Http\FormRequest;
-
-class MangaRequest extends FormRequest
+ namespace App\Http\Requests;
+ use Illuminate\Foundation\Http\FormRequest;
+ class ChapterRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -15,8 +12,7 @@ class MangaRequest extends FormRequest
     {
         return true;
     }
-
-    /**
+     /**
      * Get the validation rules that apply to the request.
      *
      * @return array
@@ -24,18 +20,19 @@ class MangaRequest extends FormRequest
     public function rules()
     {
         return [
+            'description' => 'required',
             'name' => 'required',
             'slug' => 'required',
-            'description' => 'required',
-            'image' => 'required',
+            'content' => 'required',
         ];
     }
      public function messages()
     {
         return [
+            'description.required' => __('trans.description required'),
             'name.required' => __('trans.name required'),
             'slug.required' => __('trans.slug required'),
-            'description.required' => __('trans.description required'),
-            'image.required' => __('trans.image required'),
+            'content.required' => __('trans.content required'),
         ];
-    }}
+    }
+}

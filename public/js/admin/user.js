@@ -91,26 +91,32 @@ function deleteUser($id){
 
 $('#user_add').on('submit',function(e){
     e.preventDefault();
-    var formData = new FormData($(this)[0]);
-    $.ajax({
-        url: "/admin/user/store", 
-        data: formData,
-        type: 'post',
-        contentType: false,
-        processData: false,
-        success: function (data) {
-            $('#modal-add').modal('hide');
-            $('#users-table').DataTable().ajax.reload();
-            swal( data.message , {
-                icon: "success",
-            });                     
-        },
-        error: function (data) {
-            jQuery.each(data.responseJSON.errors, function(key, value){
-                toastr.error(value) 
-            }); 
-        }
-    })
+    $pw1 = $('#password1_add').val();
+    $pw2 = $('#password2_add').val();
+    if ($pw1 == $pw2){
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: "/admin/user/store", 
+            data: formData,
+            type: 'post',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                $('#modal-add').modal('hide');
+                $('#users-table').DataTable().ajax.reload();
+                swal( data.message , {
+                    icon: "success",
+                });                     
+            },
+            error: function (data) {
+                jQuery.each(data.responseJSON.errors, function(key, value){
+                    toastr.error(value) 
+                }); 
+            }
+        })
+    } else {
+            toastr.error('The password is incorrect');
+    } 
 });
 
 function edit($id){
@@ -155,8 +161,10 @@ $('#user_edit').on('submit',function(e){
                 });                     
             }
         },
-        error: function (error) {
-            toastr.error(error.message);
+        error: function (data) {
+            jQuery.each(data.responseJSON.errors, function(key, value){
+                toastr.error(value) 
+            });
         }
     });
 });

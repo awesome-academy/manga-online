@@ -53,7 +53,6 @@ function deleteCategory($id){
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        // confirmButtonText: '@lang('trans.Yes')'
     }).then((result) => {
         if (result.value) {
             $.ajax({
@@ -80,20 +79,16 @@ $('#category_add').on('submit', function(e){
         contentType: false,
         processData: false,
         success: function (data) {
-            if (data.error) {
-                jQuery.each(data.message, function(key, value){
-                    toastr.error(value) 
-                }); 
-            } else {
-                $('#modal-add').modal('hide');
-                $('#categories-table').DataTable().ajax.reload();
-                swal(data.message, {
-                    icon: "success",
-                });                     
-            }
+            $('#modal-add').modal('hide');
+            $('#categories-table').DataTable().ajax.reload();
+            swal(data.message, {
+                icon: "success",
+            });                     
         },
-        error: function (error) {
-            toastr.error(error.message);
+        error: function (data) {
+            jQuery.each(data.responseJSON.errors, function(key, value){
+                toastr.error(value) 
+            });
         }
     });
 });
@@ -124,21 +119,16 @@ $('#category_edit').on('submit', function(e){
         contentType: false,
         processData: false,
         success: function (data) {
-            if (data.error) {
-                jQuery.each(data.message, function(key, value){
-                    toastr.error(value) 
-                }); 
-            }
-            else {
-                $('#modal-edit').modal('hide');
-                $('#categories-table').DataTable().ajax.reload();
-                swal( data.message, {
-                    icon: "success",
-                });                     
-            }
+            $('#modal-edit').modal('hide');
+            $('#categories-table').DataTable().ajax.reload();
+            swal( data.message, {
+                icon: "success",
+            });                     
         },
-        error: function (error) {
-            toastr.error(error.message);
+        error: function (data) {
+            jQuery.each(data.responseJSON.errors, function(key, value){
+                toastr.error(value) 
+            });
         }
     });
 });

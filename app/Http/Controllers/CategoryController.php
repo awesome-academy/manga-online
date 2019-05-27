@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Repositories\CategoryRepository;
+ use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {
@@ -53,7 +54,7 @@ class CategoryController extends Controller
         ]);
     }
 
-    public function store(Request $request){
+    public function store(CategoryRequest $request){
         $result = $this->categoryRepository->create($request->all());
 
         return response()->json([
@@ -68,7 +69,7 @@ class CategoryController extends Controller
         return $result;
     }
 
-    public function update(Request $request) {
+    public function update(CategoryRequest $request) {
         $result = $this->categoryRepository->update($request->id, $request->all());
     
         return response()->json([

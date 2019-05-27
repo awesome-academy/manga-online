@@ -21,6 +21,7 @@ class ChaptersTableSeeder extends Seeder
             'status' => '1',
             'slug' => 'chuong-1-xz',
             'manga_id' => '1',
+            'content' => 'nội dung',
         ]);
 
         Chapter::create([
@@ -30,6 +31,7 @@ class ChaptersTableSeeder extends Seeder
             'status' => '1',
             'slug' => 'chuong-2-xz',
             'manga_id' => '1',
+            'content' => 'nội dung',
         ]);
 
         Chapter::create([
@@ -39,6 +41,7 @@ class ChaptersTableSeeder extends Seeder
             'status' => '1',
             'slug' => 'chuong-1-xz',
             'manga_id' => '2',
+            'content' => 'nội dung',
         ]);
 
         Chapter::create([
@@ -48,6 +51,7 @@ class ChaptersTableSeeder extends Seeder
             'status' => '1',
             'slug' => 'chuong-2-xzcc',
             'manga_id' => '2',
+            'content' => 'nội dung',
         ]);
     }
 }
