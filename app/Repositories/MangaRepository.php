@@ -3,6 +3,8 @@ namespace App\Repositories;
 
 use App\Repositories\BaseRepository;
 use App\Models\Manga;
+use App\Models\Category;
+use App\Models\CategoryManga;
 
 class MangaRepository extends BaseRepository
 {
@@ -27,6 +29,11 @@ class MangaRepository extends BaseRepository
         $data['description'] = $request->description;
         $data['status'] = 1;
         $manga = Manga::create($data);
+        foreach ($request->category as $key => $category) {
+            $cate['category_id'] = $category;
+            $cate['manga_id'] = $manga->id;
+            CategoryManga::create($cate);
+        }
 
         return $manga;
     }
@@ -53,5 +60,26 @@ class MangaRepository extends BaseRepository
         $result->save();
 
         return $result;
+    }
+
+    public function getLimit($skip, $limit)
+    {
+        $mangas = Manga::where('status', config('assets.is_active'))->orderBy('id', 'desc')->skip($skip)->take($limit)->get();
+
+        return $mangas;
+    }
+
+    public function getTopView($limit)
+    {
+        $mangas = Manga::where('status', config('assets.is_active'))->orderBy('view', 'desc')->take($limit)->get();
+        
+        return $mangas;
+    }
+
+    public function getCategory($category)
+    {
+        $category = Category::where('name', $category)->first();
+        
+        return $category->mangas;
     }
 }

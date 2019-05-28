@@ -43,6 +43,14 @@
                                                 <input type="file" id="avatar" name="image"/>
                                             </div>
                                         </div>
+                                        <div class="form-group">                           
+                                            <label> {{ __('trans.Category') }} </label><br>
+                                            <select name="category[]" class="form-control" multiple>
+                                                @foreach ($categories as $category)
+                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div id="form-step-0" role="form" data-toggle="validator">
