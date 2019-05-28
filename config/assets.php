@@ -20,4 +20,6 @@ return [
     'legth_name' => 30,
     'is_active' => 1,
     'legth_content' => 150,
+    'post_number' => 12,
+    'top5' => 5,
 ];
