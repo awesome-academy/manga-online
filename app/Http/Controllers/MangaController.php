@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Repositories\MangaRepository;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\MangaRequest;
+
 class MangaController extends Controller
 {
     protected $mangaRepository;
@@ -26,7 +27,7 @@ class MangaController extends Controller
         return Datatables::of($manga)->make(true);
     }
 
-    public function store(Request $request) {
+    public function store(MangaRequest $request) {
         $result = $this->mangaRepository->store($request);
 
         return response()->json([
@@ -60,7 +61,7 @@ class MangaController extends Controller
         return $result;
     }
     
-    public function update(Request $request) {
+    public function update(MangaRequest $request) {
         $result = $this->mangaRepository->updateManga($request);
 
         return response()->json([

@@ -43,16 +43,6 @@
                                                 <input type="file" id="avatar" name="image"/>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="">{{ __('trans.Rate') }}<span class="clred"> (*) </span></label>
-                                            <input type="text" class="form-control" name="rate" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">{{ __('trans.Total Rate') }}<span class="clred"> (*) </span></label>
-                                            <input type="text" class="form-control" name="total_rate" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div id="form-step-0" role="form" data-toggle="validator">
@@ -70,12 +60,7 @@
                                                 <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
                                                 <textarea class="form-control" name="description" id="" cols="30" rows="10" required></textarea>
                                                 <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">{{ __('trans.Cover') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" name="cover" required>
-                                                <div class="help-block with-errors"></div>
-                                            </div>   
+                                            </div>  
                                         </div>
                                     </div>       
                                 </div>
@@ -110,17 +95,6 @@
                                                 <input type="file" id="avatar_edit" name="image"/>
                                             </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="">{{ __('trans.Rate') }}<span class="clred"> (*) </span></label>
-                                            <input type="text" class="form-control" name="rate" id="rate" required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="">{{ __('trans.Total Rate') }}<span class="clred"> (*) </span></label>
-                                            <input type="text" class="form-control" name="total_rate" id="total_rate"
-                                             required>
-                                            <div class="help-block with-errors"></div>
-                                        </div>
                                     </div>
                                     <div class="col-md-8">
                                         <div id="form-step-0" role="form" data-toggle="validator">
@@ -138,12 +112,7 @@
                                                 <label for="">{{ __('trans.Description') }}<span class="clred"> (*) </span></label>
                                                 <textarea class="form-control" id="description" name="description" id="" cols="30" rows="10" required></textarea>
                                                 <div class="help-block with-errors"></div>
-                                            </div>
-                                            <div class="form-group">
-                                                <label for="">{{ __('trans.Cover') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" id="cover" name="cover" required>
-                                                <div class="help-block with-errors"></div>
-                                            </div>   
+                                            </div>  
                                         </div>
                                     </div>       
                                 </div>

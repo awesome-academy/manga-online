@@ -44,6 +44,8 @@ Route::middleware('auth')->group(function(){
         Route::post('/chapter/store', 'ChapterController@store')->name('chapter.store');
         Route::get('/chapter/delete/{id}', 'ChapterController@delete')->name('chapter.delete');
         Route::get('/chapter/status/{id}', 'ChapterController@updateStatus')->name('chapter.status');
+        Route::get('/chapter/{id}/edit', 'ChapterController@edit')->name('chapter.edit');
+        Route::post('/chapter/update', 'ChapterController@update')->name('chapter.update');
     });
     
     Route::middleware('can:manage-role')->group(function(){    

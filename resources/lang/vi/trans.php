@@ -75,4 +75,12 @@ return [
     'Manage manga' => 'Quản lý truyện',
     'Manage role' => 'Quản lý quyền',
     'Not Permission to access' => 'Không có quyền truy cập',
+    'name required' => 'Tên không được rỗng',
+    'slug required' => 'Đường dẫn không được rỗng',
+    'description required' => 'Mô tả không được rỗng',
+    'content required' => 'Nội dung không được rỗng',
+    'Edit chapter' => 'Sửa chương truyện',
+    'Edit manga' => 'Sửa truyện',
+    'Status' => 'Trạng thái',
+    'image required' => 'Ảnh bìa không được rỗng',
 ];

@@ -121,14 +121,13 @@ function deleteManga($id){
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        // confirmButtonText: __('trans.hidden manga') + "",
     }).then((result) => {
         if (result.value) {
             $.ajax({
                 type: 'get',
                 url: '/admin/manga/delete/' + $id,
                 success: function(res) {
-                    swal("Add success", {
+                    swal("Delete success", {
                         icon: "success",
                     });
                     $('#mangas-table').DataTable().ajax.reload();
@@ -202,8 +201,10 @@ $('#manga_edit').on('submit',function(e){
                 });                     
             }
         },
-        error: function (error) {
-            toastr.error(error.message);
+        error: function (data) {
+            jQuery.each(data.responseJSON.errors, function(key, value){
+                toastr.error(value) 
+            }); 
         }
     });
 });

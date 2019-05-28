@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Repositories\ChapterRepository;
 use Yajra\Datatables\Datatables;
+use App\Http\Requests\ChapterRequest;
 
 class ChapterController extends Controller
 {
@@ -22,10 +23,15 @@ class ChapterController extends Controller
 
     public function getList($id){
         $chapter = $this->chapterRepository->getList($id);
+        return Datatables::of($chapter)
+        ->editColumn('content', function($chapter) {
 
-        return Datatables::of($chapter)->make(true);
+            return strip_tags($chapter->content);
+        })
+        ->make(true);
     }
-    public function store(Request $request) {
+
+    public function store(ChapterRequest $request) {
     	$data = $request->all();
     	$data['status'] = config('assets.is_active');
     	$data['slug'] = str_slug($request->slug);
@@ -36,6 +42,7 @@ class ChapterController extends Controller
             'message' => __('trans.Add success'),
         ]);
     }
+    
     public function delete($id) {
         $result = $this->chapterRepository->delete($id);
 
@@ -55,5 +62,20 @@ class ChapterController extends Controller
             'error' => false,
             'message' => $msg,
         ]);  
+    }
+
+    public function edit($id) {
+        $result = $this->chapterRepository->find($id);
+
+        return $result;
+    }
+
+    public function update(ChapterRequest $request) {
+        $result = $this->chapterRepository->update($request->id, $request->all());
+
+        return response()->json([
+            'error' => false,
+            'message' => __('trans.Edit success'),
+        ]);
     }
 }
