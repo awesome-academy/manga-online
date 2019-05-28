@@ -35,6 +35,7 @@
           rel="stylesheet" type="text/css"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('head')
+    @yield('css_init')
 </head>
 
 <!-- end::Head -->
@@ -89,7 +90,6 @@
 </div>
 
 <!-- end::Scroll Top -->
-<script src="{{ asset('/bower_components/jquery/dist/jquery.js') }}"></script>
 <!--begin::Global Theme Bundle -->
 <script src="{{ asset(config('assets.path_bower').config('assets.vendors_js')) }}"
         type="text/javascript"></script>
@@ -119,7 +119,9 @@
 </script>
 <script src="{{ asset('/bower_components/ckeditor/ckeditor.js') }}"
         type="text/javascript"></script>
+<script src="{{ asset('/js/lang.js') }}" type="text/javascript"></script>
 @yield('footer')
+@yield('js_init')
 <!--end::Page Scripts -->
 </body>
 
