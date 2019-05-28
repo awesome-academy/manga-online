@@ -7,6 +7,7 @@
  */
 
 use App\Http\Controllers\Admin\HomeController;
+use App\Http\Controllers\Admin\ReportController;
 
 Route::get('/', [HomeController::class, 'index'])->name('admin.home');
 Route::middleware('auth')->group(function(){
@@ -54,4 +55,7 @@ Route::middleware('auth')->group(function(){
         Route::post('/role/store', 'RoleController@store')->name('role.store');
         Route::get('/role/delete/{id}', 'RoleController@delete')->name('role.delete');
     });
+
+    Route::get('/reports', [ReportController::class, 'index'])->name('admin.report.index');
+    Route::get('/reports/all', [ReportController::class, 'dataTable'])->name('admin.report.gets');
 });

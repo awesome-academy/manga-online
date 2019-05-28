@@ -60,7 +60,7 @@ var DatatableRecordSelection = function () {
                 title: "Nội dung",
                 sortable: 1,
                 template: function (t) {
-                    return `<a class="m-link" target="_blank" href='${t.report_content}'>i18n.backend.view</a>`;
+                    return `<a class="m-link" target="_blank" href='${t.report_content}'>${i18n.backend.view}</a>`;
                 }
             },
             {
