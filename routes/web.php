@@ -19,3 +19,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/js/lang.js', [HomeController::class, 'exportJs'])->name('admin.lang');
 
 Auth::routes();
+Route::get('/', 'Client\HomeController@index')->name('client.home');
