@@ -48,7 +48,7 @@
                                 m-dropdown-toggle="click">
                                 <a href="#" class="m-nav__link m-dropdown__toggle">
                                     <span class="m-topbar__userpic">
-                                        <img src="{{ Auth::user()->avatar ?? asset(config('assets.path_bower') . '/assets/app/media/img/users/user4.jpg') }}"
+                                        <img src="{{ Auth::user()->avatar ? config('assets.storage') . Auth::user()->avatar : asset(config('assets.path_bower') . '/assets/app/media/img/users/user4.jpg') }}"
                                              class="m--img-rounded m--marginless" alt=""/>
                                     </span>
                                 </a>
@@ -58,7 +58,7 @@
                                         <div class="m-dropdown__header m--align-center dropdown-bg-profile">
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <div class="m-card-user__pic">
-                                                    <img src="{{ Auth::user()->avatar ?? asset(config('assets.path_bower') . '/assets/app/media/img/users/user4.jpg') }}"
+                                                    <img src="{{ Auth::user()->avatar ? config('assets.storage') . Auth::user()->avatar : asset(config('assets.path_bower') . '/assets/app/media/img/users/user4.jpg') }}"
                                                          class="m--img-rounded m--marginless" alt=""/>
                                                 </div>
                                                 <div class="m-card-user__details">
