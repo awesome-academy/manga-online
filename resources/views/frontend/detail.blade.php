@@ -20,7 +20,7 @@
                     <li class="author row">
                         <p class="name col-xs-4 "><i class="fa fa-user"></i>{{ __('trans.Author') }} :</p> &nbsp
                         @foreach ($authors as $author)
-                            <a href="" class="col-xs-8">{{ $author->name }} &nbsp</a>
+                        <a href="" class="col-xs-8">{{ $author->name }} &nbsp</a>
                         @endforeach
                     </li>
                     <li class="status row">
@@ -30,7 +30,7 @@
                     <li class="kind row">
                         <p class="name col-xs-4"><i class="fa fa-tags"></i> {{ __('trans.Category') }} : </p>&nbsp
                         @foreach ($category as $category)
-                            <a href="{{ asset('category') }}/{{ $category->slug }}" class="col-xs-8">{{ $category->name }} &nbsp</a>
+                        <a href="{{ asset('category') }}/{{ $category->slug }}" class="col-xs-8">{{ $category->name }} &nbsp</a>
                         @endforeach
                     </li>
                     <li class="row">
@@ -72,6 +72,60 @@
                 @endforeach
             </tbody>
         </table>
+        <div class="m-portlet__body">
+            <div class="m-widget3">
+                @foreach ($comments as $comment)
+                <div class="m-widget3__item">
+                    <div class="m-widget3__header">
+                        <div class="m-widget3__user-img">
+                            <img class="m-widget3__img" src="{{ $comment->user->avatar }}" alt="">
+                        </div>
+                        <div class="m-widget3__info">
+                            <span class="m-widget3__username">
+                                {{ $comment->user->fullname }}
+                            </span><br>
+                            <span class="m-widget3__time">
+                                {{ $comment->created_at->diffForHumans() }}
+                            </span>
+                        </div>
+                    </div>
+                    <div class="m-widget3__body">
+                        <p class="m-widget3__text">
+                            {{ $comment->content }}
+                        </p>
+                    </div>
+                </div>
+                @endforeach
+                <div id="append"></div>
+
+                @if (!empty(session('users')))
+                <div class="m-widget3__item">
+                    <div class="m-widget3__header">
+                        <div class="m-widget3__user-img">
+                            <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}" class="m-widget3__img" alt=""/>
+                        </div>
+                        <div class="m-widget3__info">
+                            <span class="m-widget3__username">
+                                {{ session('users')->fullname }}
+                            </span><br>
+                        </div>
+                    </div>
+                    <div class="m-widget3__body">
+                        <form action="" id="comment" method="POST" role="form">
+                            @csrf
+                            <p class="m-widget3__text">
+                                <textarea class="form-control m-input" name="content" id="exampleTextarea" rows="2"></textarea>
+                            </p>
+                            <input type="hidden" name="manga_id" value="{{ $manga->id }}">
+                            <button type="submit" class="btn btn-primary">{{ __('trans.Save') }}</button>
+                        </form>
+                    </div>
+                </div>
+
+                @endif
+            </div>
+
+        </div>
     </div>
 
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-portlet" id="menuright">
@@ -90,7 +144,7 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <h6 class="m--font-brand"><a href="{{ asset('manga') }}/{{ $manga->slug }}">{{ $manga->name }}</a></h6>
                     <p>{{ $manga->created_at->diffForHumans() }}</p>
-                    <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp <i class="fa fa-comment"></i>21
+                    <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp <i class="fa fa-comment"></i>&nbsp {{ $manga->count_comment }}
                 </div>
             </div>    
             <br>                                 
@@ -105,19 +159,19 @@
             <h4 class="m--font-warning">{{ __('trans.Suggestions') }}</h4><br>
             @foreach ($suggest as $key => $suggest)   
             @if ($key > 0 && $key < 6)
-                <div class="row">
-                    <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
-                        <a href="{{ asset('manga') }}/{{ $suggest->slug }}">
-                            <img class="width70" src="{{ asset('storage') }}{{ $suggest->image }}">
-                        </a>
-                    </div>
-                    <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
-                        <h6 class="m--font-brand"><a href="{{ asset('manga') }}/{{ $suggest->slug }}">{{ $suggest->name }}</a></h6>
-                        <p>{{ $suggest->created_at->diffForHumans() }}</p>
-                        <i class="fa fa-eye"></i> {{ $suggest->view }} &nbsp <i class="fa fa-comment"></i>21
-                    </div>
-                </div>    
-                <br>
+            <div class="row">
+                <div class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                    <a href="{{ asset('manga') }}/{{ $suggest->slug }}">
+                        <img class="width70" src="{{ asset('storage') }}{{ $suggest->image }}">
+                    </a>
+                </div>
+                <div class="col-xs-7 col-sm-7 col-md-7 col-lg-7">
+                    <h6 class="m--font-brand"><a href="{{ asset('manga') }}/{{ $suggest->slug }}">{{ $suggest->name }}</a></h6>
+                    <p>{{ $suggest->created_at->diffForHumans() }}</p>
+                    <i class="fa fa-eye"></i> {{ $suggest->view }} &nbsp <i class="fa fa-comment"></i>&nbsp {{ $manga->count_comment }}
+                </div>
+            </div>    
+            <br>
             @endif 
             @endforeach
             <br>

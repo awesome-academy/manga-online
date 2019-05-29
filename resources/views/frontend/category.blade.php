@@ -15,7 +15,7 @@
                     <img class="image" src="{{ asset('storage') }}{{ $manga->image }}">
                 </a>
                 <div class="bge7e7ff">
-                    <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp<i class="fa fa-comment"></i>21
+                    <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp<i class="fa fa-comment"></i>&nbsp {{ $manga->count_comment }}
                 </div><br>
                 <h6 class="m--font-brand"><a href="{{ asset('manga') }}/{{ $manga->slug }}">{{ $manga->name }}</a></h6>
                 <p>{{ $manga->created_at->diffForHumans() }}</p>
@@ -39,7 +39,7 @@
                 <div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
                     <h6 class="m--font-brand"><a href="{{ asset('manga') }}/{{ $manga->slug }}">{{ $manga->name }}</a></h6>
                     <p>{{ $manga->created_at->diffForHumans() }}</p>
-                    <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp <i class="fa fa-comment"></i>21
+                    <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp <i class="fa fa-comment"></i>&nbsp {{ $manga->count_comment }}
                 </div>
             </div>    
             <br>                                 

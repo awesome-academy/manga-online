@@ -19,6 +19,7 @@ class Manga extends Model
         'rate',
         'total_rate',
         'image',
+        'count_comment',
     ];
 
     public function authors()

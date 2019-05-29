@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Client;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\MangaRepository;
+use App\Repositories\CommentRepository;
 
 class HomeController extends Controller
 {
@@ -52,8 +53,9 @@ class HomeController extends Controller
             $manga->save();
             Setcookie('status_view', $manga->id, time() + 60);
         } 
+        $comments = $manga->comments;
 
-        return view('frontend.detail', compact('manga', 'top5view', 'category', 'authors', 'chapters', 'suggest'));
+        return view('frontend.detail', compact('manga', 'top5view', 'category', 'authors', 'chapters', 'suggest', 'comments'));
     }
 
     public function getChapter($slug_manga, $slug_chapter)
@@ -65,4 +67,10 @@ class HomeController extends Controller
         return view('frontend.chapter', compact('manga', 'chapter', 'listchapter'));
     }
 
+    public function comment(Request $request)
+    {
+        $result = $this->mangaRepository->createComment($request->all());
+
+        return $result;
+    }
 }

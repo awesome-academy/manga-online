@@ -18,7 +18,7 @@
                         </div>
                         <div class="m-stack__item m-stack__item--middle m-brand__tools">
                             <!-- begin::Quick Actions-->
-                            <a href="#" class="btn btn-link m-btn m-btn--icon m-btn--pill m-link">
+                            <a href="/" class="btn btn-link m-btn m-btn--icon m-btn--pill m-link">
                                 <span>@lang('frontend.home')</span>
                             </a>
                             <!-- begin::Responsive Header Menu Toggler-->
