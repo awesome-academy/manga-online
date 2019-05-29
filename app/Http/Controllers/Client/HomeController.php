@@ -43,6 +43,15 @@ class HomeController extends Controller
         $authors = $manga->authors;
         $chapters = $manga->chapters;
         $suggest = $this->mangaRepository->getCategory($category[0]->slug);
+        if (!isset($_COOKIE['status_view'])) {
+            $manga->view = $manga->view + 1;
+            $manga->save();
+            Setcookie('status_view', $manga->id, time() + 60);
+        } elseif ($_COOKIE['status_view'] !=  $manga->id){
+            $manga->view = $manga->view + 1;
+            $manga->save();
+            Setcookie('status_view', $manga->id, time() + 60);
+        } 
 
         return view('frontend.detail', compact('manga', 'top5view', 'category', 'authors', 'chapters', 'suggest'));
     }
@@ -55,4 +64,5 @@ class HomeController extends Controller
 
         return view('frontend.chapter', compact('manga', 'chapter', 'listchapter'));
     }
+
 }

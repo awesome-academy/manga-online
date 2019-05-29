@@ -34,7 +34,7 @@ class ChapterController extends Controller
     public function store(ChapterRequest $request) {
     	$data = $request->all();
     	$data['status'] = config('assets.is_active');
-    	$data['slug'] = str_slug($request->slug);
+    	$data['slug'] = str_slug($request->slug) . time();
         $result = $this->chapterRepository->create($data);
 
         return response()->json([

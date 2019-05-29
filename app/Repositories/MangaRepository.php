@@ -27,7 +27,7 @@ class MangaRepository extends BaseRepository
         $data['name'] = $request->name;
         $data['rate'] = 0;
         $data['total_rate'] = 0;
-        $data['slug'] = str_slug($request->slug);
+        $data['slug'] = str_slug($request->slug) . time();
         $data['description'] = $request->description;
         $data['status'] = 1;
         $manga = Manga::create($data);

@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class MangaRequest extends FormRequest
+class UpdateMangaRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -27,7 +27,6 @@ class MangaRequest extends FormRequest
             'name' => 'required',
             'slug' => 'required',
             'description' => 'required',
-            'image' => 'required',
         ];
     }
     public function messages()
@@ -36,7 +35,6 @@ class MangaRequest extends FormRequest
             'name.required' => __('trans.name required'),
             'slug.required' => __('trans.slug required'),
             'description.required' => __('trans.description required'),
-            'image.required' => __('trans.image required'),
         ];
     }
 }
