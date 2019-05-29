@@ -114,4 +114,7 @@
 
 @section('footer')
 <script type="text/javascript" src="{{ asset('js/admin/chapter.js') }}"></script>
+<script type="text/javascript">
+
+</script>
 @endsection

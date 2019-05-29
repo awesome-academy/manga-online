@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\View;
 use App\Models\Role;
 use App\Models\Permission;
 use App\Models\Category;
+use App\Models\Author;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -35,5 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
         $categories  = Category::all();
         View::share('categories', $categories);
+        $authors  = Author::all();
+        View::share('authors', $authors);
     }
 }

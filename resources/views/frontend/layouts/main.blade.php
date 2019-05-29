@@ -33,6 +33,7 @@
           href="{{ asset(config('assets.path_bower').config('assets.favicon')) }}"/>
     <meta name="csrf-token" content="{{ csrf_token() }}" />
     @yield('css_init')
+    @yield('head')
 </head>
 
 <!-- end::Head -->
@@ -52,8 +53,8 @@
     <!-- begin::Header -->
     @include('frontend.layouts.header')
     <!-- end::Header -->
-    <div class="m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
-        <div class="m-grid__item m-grid__item--fluid m-wrapper">
+    <div class=" mgtop100 m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
+        <div class=" m-grid__item m-grid__item--fluid m-wrapper">
             <div class="m-content">
                 @yield('content')
             </div>
@@ -95,6 +96,7 @@
     });
 </script>
 @yield('js_init')
+@yield('footer')
 <!--end::Page Scripts -->
 </body>
 <!-- end::Body -->

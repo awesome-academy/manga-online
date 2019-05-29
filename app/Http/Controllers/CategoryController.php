@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Yajra\Datatables\Datatables;
 use App\Repositories\CategoryRepository;
- use App\Http\Requests\CategoryRequest;
+use App\Http\Requests\CategoryRequest;
 
 class CategoryController extends Controller
 {

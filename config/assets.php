@@ -24,4 +24,5 @@ return [
     'legth_content' => 150,
     'post_number' => 12,
     'top5' => 5,
+    'paginate' => 12,
 ];
