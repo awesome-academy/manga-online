@@ -47,7 +47,15 @@
                                             <label> {{ __('trans.Category') }} </label><br>
                                             <select name="category[]" class="form-control" multiple>
                                                 @foreach ($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">                           
+                                            <label> {{ __('trans.Author') }} </label><br>
+                                            <select name="author" class="form-control">
+                                                @foreach ($authors as $author)
+                                                <option value="{{ $author->id }}">{{ $author->name }}</option>
                                                 @endforeach
                                             </select>
                                         </div>
@@ -102,6 +110,22 @@
                                             <div class="dp-none">
                                                 <input type="file" id="avatar_edit" name="image"/>
                                             </div>
+                                        </div>
+                                        <div class="form-group">                           
+                                            <label> {{ __('trans.Category') }} </label><br>
+                                            <select name="category[]" class="form-control" multiple>
+                                                @foreach ($categories as $category)
+                                                <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                @endforeach
+                                            </select>
+                                        </div>
+                                        <div class="form-group">                           
+                                            <label> {{ __('trans.Author') }} </label><br>
+                                            <select name="author" class="form-control">
+                                                @foreach ($authors as $author)
+                                                <option value="{{ $author->id }}">{{ $author->name }}</option>
+                                                @endforeach
+                                            </select>
                                         </div>
                                     </div>
                                     <div class="col-md-8">

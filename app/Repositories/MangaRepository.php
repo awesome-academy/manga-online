@@ -5,6 +5,8 @@ use App\Repositories\BaseRepository;
 use App\Models\Manga;
 use App\Models\Category;
 use App\Models\CategoryManga;
+use App\Models\AuthorManga;
+use App\Models\Chapter;
 
 class MangaRepository extends BaseRepository
 {
@@ -34,6 +36,10 @@ class MangaRepository extends BaseRepository
             $cate['manga_id'] = $manga->id;
             CategoryManga::create($cate);
         }
+        $author['author_id'] = $request->author;
+        $author['manga_id'] = $manga->id;
+        AuthorManga::create($author);
+
 
         return $manga;
     }
@@ -62,9 +68,9 @@ class MangaRepository extends BaseRepository
         return $result;
     }
 
-    public function getLimit($skip, $limit)
+    public function getLimit()
     {
-        $mangas = Manga::where('status', config('assets.is_active'))->orderBy('id', 'desc')->skip($skip)->take($limit)->get();
+        $mangas = Manga::where('status', config('assets.is_active'))->orderBy('id', 'desc')->paginate(config('assets.paginate'));
 
         return $mangas;
     }
@@ -78,8 +84,22 @@ class MangaRepository extends BaseRepository
 
     public function getCategory($category)
     {
-        $category = Category::where('name', $category)->first();
+        $mangas = Category::where('slug', $category)->first()->mangas;
         
-        return $category->mangas;
+        return $mangas;
+    }
+
+    public function getManga($slug)
+    {
+        $manga = Manga::where('slug', $slug)->first();
+
+        return $manga;
+    }
+
+    public function getChapter($slug)
+    {
+        $chapter = Chapter::where('slug', $slug)->first();
+
+        return $chapter;
     }
 }
