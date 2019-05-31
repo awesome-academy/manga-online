@@ -73,15 +73,17 @@
         type="text/javascript"></script>
 <script src="{{ asset(config('assets.path_bower').config('assets.scripts_js_client')) }}"
         type="text/javascript"></script>
-
+<script src="{{ asset('/js/firebase-6.0.4/firebase-app.js') }}"></script>
+<script src="{{ asset('/js/firebase-6.0.4/firebase-auth.js') }}"></script>
 <!--end::Global Theme Bundle -->
 
 <!--begin::Page Vendors -->
 <script src="{{ asset('/bower_components/metronic-theme/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js') }}"
         type="text/javascript"></script>
+<script src="{{ asset('/js/client/main.js') }}"
+        type="text/javascript"></script>
 
 <!--end::Page Vendors -->
-
 <!--begin::Page Scripts -->
 <script type="text/javascript">
     $.ajaxSetup({
@@ -89,8 +91,6 @@
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
     });
-</script>
-<script>
     $(window).on('load', function() {
         $('body').removeClass('m-page--loading');
     });
