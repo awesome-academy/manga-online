@@ -42,59 +42,72 @@
                     <div id="m_header_topbar" class="m-topbar m-stack m-stack--ver m-stack--general">
                         <div class="m-stack__item m-topbar__nav-wrapper">
                             <ul class="m-topbar__nav m-nav m-nav--inline">
-                                <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
-                                    m-dropdown-toggle="click">
-                                    <a href="#" class="m-nav__link m-dropdown__toggle">
+                                @if(empty(session('users')))
+                                    <li class="m-nav__item m-nav__item--primary m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"
+                                        m-dropdown-toggle="click">
+                                        <a href="javascript:void(0);" class="m-nav__link" id="login_facebook_btn"
+                                           route="{{ route('client.login', ['provider' => 'facebook']) }}">
+                                            <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
+                                            <span class="m-nav__link-icon"><span class="m-nav__link-icon-wrapper"><i
+                                                            class="flaticon-facebook-letter-logo"></i></span></span>
+                                        </a>
+                                    </li>
+                                @else
+                                    <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
+                                        m-dropdown-toggle="click">
+                                        <a href="#" class="m-nav__link m-dropdown__toggle">
                                         <span class="m-topbar__userpic">
-                                            <img src="{{ asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                            <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
                                                  class="m--img-rounded m--marginless m--img-centered"
                                                  alt=""/>
                                         </span>
-                                        <span class="m-nav__link-icon m-topbar__usericon m--hide">
+                                            <span class="m-nav__link-icon m-topbar__usericon m--hide">
                                             <span class="m-nav__link-icon-wrapper"><i
                                                         class="flaticon-user-ok"></i></span>
                                         </span>
-                                        <span class="m-topbar__username m--hide">@lang('frontend.home')</span>
-                                    </a>
-                                    <div class="m-dropdown__wrapper">
-                                        <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
-                                        <div class="m-dropdown__inner">
-                                            <div class="m-dropdown__header m--align-center">
-                                                <div class="m-card-user m-card-user--skin-light">
-                                                    <div class="m-card-user__pic">
-                                                        <img src="{{ asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
-                                                             class="m--img-rounded m--marginless" alt=""/>
-                                                    </div>
-                                                    <div class="m-card-user__details">
-                                                        <span class="m-card-user__name m--font-weight-500">@lang('frontend.home')</span>
-                                                        <a href="" class="m-card-user__email m--font-weight-300 m-link">@lang('frontend.home')</a>
+                                            <span class="m-topbar__username m--hide">@lang('frontend.home')</span>
+                                        </a>
+                                        <div class="m-dropdown__wrapper">
+                                            <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                                            <div class="m-dropdown__inner">
+                                                <div class="m-dropdown__header m--align-center">
+                                                    <div class="m-card-user m-card-user--skin-light">
+                                                        <div class="m-card-user__pic">
+                                                            <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                                                 class="m--img-rounded m--marginless" alt=""/>
+                                                        </div>
+                                                        <div class="m-card-user__details">
+                                                            <span class="m-card-user__name m--font-weight-500">{{ session('users')->fullname }}</span>
+                                                            <a href=""
+                                                               class="m-card-user__email m--font-weight-300 m-link">{{ session('users')->email }}</a>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                            <div class="m-dropdown__body">
-                                                <div class="m-dropdown__content">
-                                                    <ul class="m-nav m-nav--skin-light">
-                                                        <li class="m-nav__section m--hide">
-                                                            <span class="m-nav__section-text"></span>
-                                                        </li>
-                                                        <li class="m-nav__item">
-                                                            <a href="#" class="m-nav__link">
-                                                                <i class="m-nav__link-icon flaticon-profile-1"></i>
-                                                                <span class="m-nav__link-text">@lang('frontend.home')</span>
-                                                            </a>
-                                                        </li>
-                                                        <li class="m-nav__separator m-nav__separator--fit">
-                                                        </li>
-                                                        <li class="m-nav__item">
-                                                            <a href="#"
-                                                               class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">@lang('frontend.home')</a>
-                                                        </li>
-                                                    </ul>
+                                                <div class="m-dropdown__body">
+                                                    <div class="m-dropdown__content">
+                                                        <ul class="m-nav m-nav--skin-light">
+                                                            <li class="m-nav__section m--hide">
+                                                                <span class="m-nav__section-text"></span>
+                                                            </li>
+                                                            <li class="m-nav__item">
+                                                                <a href="#" class="m-nav__link">
+                                                                    <i class="m-nav__link-icon flaticon-profile-1"></i>
+                                                                    <span class="m-nav__link-text">@lang('frontend.profile')</span>
+                                                                </a>
+                                                            </li>
+                                                            <li class="m-nav__separator m-nav__separator--fit">
+                                                            </li>
+                                                            <li class="m-nav__item">
+                                                                <a href="{{ route('client.logout') }}"
+                                                                   class="btn m-btn--pill btn-secondary m-btn m-btn--custom m-btn--label-brand m-btn--bolder">@lang('frontend.log_out')</a>
+                                                            </li>
+                                                        </ul>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </li>
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>

@@ -9,4 +9,6 @@
 return [
     'home' => 'Trang chủ',
     'please_wait' => 'Đang tải...',
+    'profile' => 'Hồ sơ cá nhân',
+    'log_out' => 'Đăng xuất',
 ];
