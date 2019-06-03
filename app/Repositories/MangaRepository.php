@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\CategoryManga;
 use App\Models\AuthorManga;
 use App\Models\Chapter;
+use App\Models\Comment;
 
 class MangaRepository extends BaseRepository
 {
@@ -101,5 +102,23 @@ class MangaRepository extends BaseRepository
         $chapter = Chapter::where('slug', $slug)->first();
 
         return $chapter;
+    }
+
+    public function createComment($data)
+    {
+        $manga = Manga::findOrFail($data['manga_id']);
+        if ($manga == null) {
+
+            return response()->view('errors/404');
+        }
+        $manga->count_comment = $manga->count_comment + 1;
+        $manga->save();
+        $data['user_id'] = session('users')->id;
+        $data['type'] = 1;
+        $result = Comment::create($data);
+        $result['username'] = $result->user->fullname;
+        $result['avatar'] = $result->user->avatar;
+
+        return $result;
     }
 }
