@@ -11,5 +11,10 @@ return [
     'please_wait' => 'Đang tải...',
     'profile' => 'Hồ sơ cá nhân',
     'log_out' => 'Đăng xuất',
-    'List follow' => 'Danh sách tuyện theo dõi'
+    'List follow' => 'Danh sách tuyện theo dõi',
+    'lang' => [
+        'vi' => 'Tiếng việt',
+        'en' => 'Tiếng anh',
+    ],
+    'language' => 'Ngôn ngữ',
 ];

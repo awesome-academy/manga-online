@@ -30,5 +30,7 @@ return [
     'password_plh' => 'Password',
     'password_re_plh' => 'Confirm password',
     'fullname_plh' => 'Fullname',
-
+    'username_plh' => 'Username',
+    'sign_out' => 'Logout',
+    'profile' => 'My Profile'
 ];
