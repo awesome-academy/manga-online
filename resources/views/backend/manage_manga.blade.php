@@ -64,12 +64,12 @@
                                         <div id="form-step-0" role="form" data-toggle="validator">
                                             <div class="form-group">
                                                 <label for="">{{ __('trans.Name manga') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" name="name" required>
+                                                <input type="text" class="form-control" onkeyup="edit_slug()" id="name_add" name="name" required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <div class="form-group">
                                                 <label for="">{{ __('trans.Slug') }}<span class="clred"> (*) </span></label>
-                                                <input type="text" class="form-control" name="slug" required>
+                                                <input type="text" class="form-control" id="slug_add" name="slug" required>
                                                 <div class="help-block with-errors"></div>
                                             </div>
                                             <div class="form-group">
