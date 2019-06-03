@@ -8,6 +8,7 @@ use App\Models\CategoryManga;
 use App\Models\AuthorManga;
 use App\Models\Chapter;
 use App\Models\Comment;
+use App\Models\Follow;
 
 class MangaRepository extends BaseRepository
 {
@@ -92,7 +93,7 @@ class MangaRepository extends BaseRepository
 
     public function getManga($slug)
     {
-        $manga = Manga::where('slug', $slug)->first();
+        $manga = Manga::where('slug', $slug)->firstOrFail();
 
         return $manga;
     }
@@ -120,5 +121,43 @@ class MangaRepository extends BaseRepository
         $result['avatar'] = $result->user->avatar;
 
         return $result;
+    }
+
+    public function follow($id)
+    {
+        $follow = Follow::where('user_id', session('users')->id)->where('manga_id', $id)->first();
+        if ($follow == null) {
+            $data['user_id'] = session('users')->id;
+            $data['manga_id'] = $id;
+            $data['chapter_id'] = 1;
+            $result = Follow::create($data);
+        } else {
+            $follow->delete();
+        }
+
+        return 0;
+    }
+
+    public function checkFollow($manga_id){
+        $follow = Follow::where('user_id', session('users')->id)->where('manga_id', $manga_id)->first();
+        if ($follow == null) {     
+            return 0;
+        } else {
+            return 1;
+        }
+    }
+
+    public function countView($manga){
+        if (!isset($_COOKIE['status_view' . $manga->id])) {
+            $manga->view = $manga->view + 1;
+            $manga->save();
+            Setcookie('status_view' . $manga->id, $manga->id, time() + 60);
+        } elseif ($_COOKIE['status_view' . $manga->id] !=  $manga->id){
+            $manga->view = $manga->view + 1;
+            $manga->save();
+            Setcookie('status_view' . $manga->id , $manga->id, time() + 60);
+        }
+        
+        return true;
     }
 }

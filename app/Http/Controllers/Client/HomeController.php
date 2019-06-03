@@ -35,27 +35,15 @@ class HomeController extends Controller
     public function getManga($slug)
     {
         $manga = $this->mangaRepository->getManga($slug);
-        if ($manga == null) {
-
-            return response()->view('errors/404');
-        }
         $top5view = $this->mangaRepository->getTopView(config('assets.top5'));
-        $category = $manga->categories;
-        $authors = $manga->authors;
-        $chapters = $manga->chapters;
-        $suggest = $this->mangaRepository->getCategory($category[0]->slug);
-        if (!isset($_COOKIE['status_view'])) {
-            $manga->view = $manga->view + 1;
-            $manga->save();
-            Setcookie('status_view', $manga->id, time() + 60);
-        } elseif ($_COOKIE['status_view'] !=  $manga->id){
-            $manga->view = $manga->view + 1;
-            $manga->save();
-            Setcookie('status_view', $manga->id, time() + 60);
-        } 
-        $comments = $manga->comments;
-
-        return view('frontend.detail', compact('manga', 'top5view', 'category', 'authors', 'chapters', 'suggest', 'comments'));
+        $suggest = $this->mangaRepository->getCategory($manga->categories[0]->slug);
+        $view = $this->mangaRepository->countView($manga);
+        $status = 0;
+        if (!empty(session('users'))) {
+            $status = $this->mangaRepository->checkFollow($manga->id);
+        }
+            
+        return view('frontend.detail', compact('manga', 'top5view', 'suggest', 'status'));
     }
 
     public function getChapter($slug_manga, $slug_chapter)
@@ -72,5 +60,30 @@ class HomeController extends Controller
         $result = $this->mangaRepository->createComment($request->all());
 
         return $result;
+    }
+
+    public function follow($id)
+    {
+        if (empty(session('users')))
+        {
+            return response()->json([
+                'error' => true,
+                'message' => __('trans.is login'),
+            ]);  
+        }
+        $result = $this->mangaRepository->follow($id);
+
+        return $result;
+    }
+
+    public function listFollow(){
+        if (empty(session('users')))
+        {
+            return response()->view('errors/404');
+        }
+        $manganew = session('users')->mangas;
+        $top5view = $this->mangaRepository->getTopView(config('assets.top5'));
+
+        return view('frontend.follow', compact('manganew', 'top5view'));
     }
 }
