@@ -55,3 +55,33 @@ $(document).ready(function () {
     main.auth.facebook();
     firebase.initializeApp(main.config.firebase);
 });
+
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
+$(window).on('load', function() {
+    $('body').removeClass('m-page--loading');
+});
+
+$('#header-search').on('keyup', function() {
+    var search = $(this).serialize();
+    if ($(this).find('.m-input').val() == '') {
+        $('#search-suggest div').hide();
+    } else {
+        $.ajax({
+            url: '/search',
+            type: 'POST',
+            data: search,
+        })
+        .done(function(res) {
+            $('#search-suggest').html('');
+            res.forEach(function(data) {
+                $('#search-suggest').append("<div class='row'><span><a href='/manga/" + data.slug + "'>&nbsp&nbsp<img class='width70' src='/storage" + data.image + "'></a> &nbsp&nbsp</span><span><h6 class='m--font-brand'><a href='/manga/" + data.slug + "''>" + data.name + "</a></h6></span></div><br>")
+            });
+        })
+    };
+});
+

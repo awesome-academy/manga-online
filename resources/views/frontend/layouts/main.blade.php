@@ -85,16 +85,6 @@
 
 <!--end::Page Vendors -->
 <!--begin::Page Scripts -->
-<script type="text/javascript">
-    $.ajaxSetup({
-        headers: {
-            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-        }
-    });
-    $(window).on('load', function() {
-        $('body').removeClass('m-page--loading');
-    });
-</script>
 @yield('js_init')
 @yield('footer')
 <!--end::Page Scripts -->

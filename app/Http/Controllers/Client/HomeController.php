@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Repositories\MangaRepository;
 use App\Repositories\CommentRepository;
+use App\Models\Manga;
 
 class HomeController extends Controller
 {
@@ -85,5 +86,14 @@ class HomeController extends Controller
         $top5view = $this->mangaRepository->getTopView(config('assets.top5'));
 
         return view('frontend.follow', compact('manganew', 'top5view'));
+    }
+
+    public function searchFullText(Request $request)
+    {
+        if ($request->search != '') {
+            $data = Manga::FullTextSearch('name', $request->search)->get();
+            
+            return $data;
+        }
     }
 }
