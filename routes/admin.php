@@ -21,6 +21,9 @@ Route::middleware('auth')->group(function(){
         Route::post('/user/update', 'UserController@update');
         Route::get('/user/{id}/edit', 'UserController@edit');
     });
+    Route::get('/profile', 'UserController@profile');
+    Route::post('/user/profile', 'UserController@updateProfile');
+    Route::post('/password', 'UserController@updatePassword');
 
     Route::middleware('can:manage-category')->group(function(){
         Route::get('/category', 'CategoryController@index')->name('category.index');
