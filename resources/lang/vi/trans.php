@@ -93,4 +93,8 @@ return [
     'Follow' => 'Theo dõi',
     'Chapter' => 'Chương truyện',
     'Suggestions' => 'Đề xuất',
+    'Manga follow' => 'Truyện theo dõi',
+    'Manga category' => 'Truyện theo thể loại ',
+    'UnFollow' => 'Bỏ theo dõi',
+    'is login' => 'Bạn cần phải đăng nhập',
 ];

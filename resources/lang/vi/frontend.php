@@ -11,4 +11,5 @@ return [
     'please_wait' => 'Đang tải...',
     'profile' => 'Hồ sơ cá nhân',
     'log_out' => 'Đăng xuất',
+    'List follow' => 'Danh sách tuyện theo dõi'
 ];

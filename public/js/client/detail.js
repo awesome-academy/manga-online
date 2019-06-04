@@ -15,3 +15,24 @@ $('#comment').on('submit',function(e){
         }
     })
 });
+
+function follow($id)
+{
+    $.ajax({
+        url: "/follow/" + $id, 
+        type: 'get',
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            if (data.error)
+            {
+                toastr.error(data.message) 
+            } else {
+                location.reload();
+            }
+        },
+        error: function (data) {
+            toastr.error(data.message) 
+        }
+    })
+}

@@ -64,4 +64,9 @@ class User extends Authenticatable
     public function reports(){
         return $this->hasMany('App\Models\Report');
     }
+
+    public function mangas()
+    {
+        return $this->belongsToMany('App\Models\Manga', 'follows');
+    }
 }

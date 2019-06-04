@@ -19,7 +19,7 @@
                 <ul class="list-info">
                     <li class="author row">
                         <p class="name col-xs-4 "><i class="fa fa-user"></i>{{ __('trans.Author') }} :</p> &nbsp
-                        @foreach ($authors as $author)
+                        @foreach ($manga->authors as $author)
                         <a href="" class="col-xs-8">{{ $author->name }} &nbsp</a>
                         @endforeach
                     </li>
@@ -29,7 +29,7 @@
                     </li>
                     <li class="kind row">
                         <p class="name col-xs-4"><i class="fa fa-tags"></i> {{ __('trans.Category') }} : </p>&nbsp
-                        @foreach ($category as $category)
+                        @foreach ($manga->categories as $category)
                         <a href="{{ asset('category') }}/{{ $category->slug }}" class="col-xs-8">{{ $category->name }} &nbsp</a>
                         @endforeach
                     </li>
@@ -42,9 +42,14 @@
                     </li>
                 </ul>
                 <div>{{ __('trans.Ranking') }}: <span>0</span>/ 0 - <span>0</span>{{ __('trans.Evaluate') }}.</div><br>
+                
                 <div>
-                    <a class="follow-link btn btn-success"><i class="fa fa-heart"></i> Theo dõi</a>
-                    <span><b> 0 </b> {{ __('trans.Follow') }}</span>
+                    @if ($status == 0)
+                    <p class="follow-link btn btn-success" onclick="follow({{ $manga->id }})" ><i class="fa fa-heart"></i> {{ __('trans.Follow') }}</p>
+                    @else
+                    <p class="follow-link btn btn-warning" onclick="follow({{ $manga->id }})"><i class="fas fa-minus-square"></i> {{ __('trans.UnFollow') }}</p>
+                    @endif
+                    <!-- <span><b> 0 </b> {{ __('trans.Follow') }}</span> -->
                 </div>
             </div><br><br>
         </div><br>
@@ -62,7 +67,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($chapters as $chapter)
+                @foreach ($manga->chapters as $chapter)
                 <tr>
                     <td><a href="{{ asset('manga') }}/{{ $manga->slug }}/{{ $chapter->slug }}">{{ $chapter->name }}</a></td>
                     <td>{{ $chapter->view }}</td>
@@ -74,7 +79,7 @@
         </table>
         <div class="m-portlet__body">
             <div class="m-widget3">
-                @foreach ($comments as $comment)
+                @foreach ($manga->comments as $comment)
                 <div class="m-widget3__item">
                     <div class="m-widget3__header">
                         <div class="m-widget3__user-img">

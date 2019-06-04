@@ -95,6 +95,12 @@
                                                                     <span class="m-nav__link-text">@lang('frontend.profile')</span>
                                                                 </a>
                                                             </li>
+                                                            <li class="m-nav__item">
+                                                                <a href="{{ asset('follow') }}" class="m-nav__link">
+                                                                    <i class="m-nav__link-icon flaticon-layers"></i>
+                                                                    <span class="m-nav__link-text">@lang('frontend.List follow')</span>
+                                                                </a>
+                                                            </li>
                                                             <li class="m-nav__separator m-nav__separator--fit">
                                                             </li>
                                                             <li class="m-nav__item">

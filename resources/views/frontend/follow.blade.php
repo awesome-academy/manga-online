@@ -7,7 +7,7 @@
 @section('content')
 <div class="row">
     <div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 m-portlet__body">
-        <h3 class="m--font-primary">{{ __('trans.Manga category') }}</h3>
+        <h3 class="m--font-primary">{{ __('trans.Manga follow') }}</h3>
         <div class="row" id="post">
             @foreach ($manganew as $manga)                                           
             <div class=" col-lg-3 col-md-4 col-sm-4 col-xs-6 col-6">
@@ -17,7 +17,7 @@
                 <div class="bge7e7ff">
                     <i class="fa fa-eye"></i> {{ $manga->view }} &nbsp<i class="fa fa-comment"></i>&nbsp {{ $manga->count_comment }}
                 </div><br>
-                <h6 class="m--font-brand"><a href="{{ asset('manga') }}/{{ $manga->slug }}">{{ $manga->name }}</a></h6>
+                <h6 class="m--font-brand"><a href="{{ asset('manga/') }}/{{ $manga->slug }}">{{ $manga->name }}</a></h6>
                 <p>{{ $manga->created_at->diffForHumans() }}</p>
             </div>
             @endforeach
@@ -43,11 +43,6 @@
                 </div>
             </div>    
             <br>                                 
-            @endforeach
-
-            <h4 class="m--font-warning">{{ __('trans.Category') }}</h4><br>
-            @foreach ($categories as $category)   
-            <span><button type="button" class="btn m-btn m-btn--gradient-from-danger m-btn--gradient-to-warning"><a href="{{ asset('category') }}/{{ $category->slug }}">{{ $category->name }}</a></button></span>
             @endforeach
             <br>
         </div>
