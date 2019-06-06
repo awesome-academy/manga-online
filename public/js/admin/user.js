@@ -93,7 +93,7 @@ $('#user_add').on('submit',function(e){
     e.preventDefault();
     $pw1 = $('#password1_add').val();
     $pw2 = $('#password2_add').val();
-    if ($pw1 == $pw2){
+    if ($pw1 == $pw2) {
         var formData = new FormData($(this)[0]);
         $.ajax({
             url: "/admin/user/store", 
@@ -115,7 +115,7 @@ $('#user_add').on('submit',function(e){
             }
         })
     } else {
-            toastr.error('The password is incorrect');
+        toastr.error('The password is incorrect');
     } 
 });
 
@@ -167,4 +167,50 @@ $('#user_edit').on('submit',function(e){
             });
         }
     });
+});
+
+$('#updateprofile').on('submit',function(e){
+    e.preventDefault();
+    var formData = new FormData($(this)[0]);
+    $.ajax({
+        url: "/admin/user/profile", 
+        data: formData,
+        type: 'post',
+        contentType: false,
+        processData: false,
+        success: function (data) {
+            toastr.success(data.message);
+        },
+        error: function (data) {
+            toastr.error(data);
+        }
+    })
+});
+
+$('#editpass').on('submit',function(e){
+    e.preventDefault();
+    $pw1 = $('#pw2').val();
+    $pw2 = $('#pw3').val();
+    if ($pw1 == $pw2) {
+        var formData = new FormData($(this)[0]);
+        $.ajax({
+            url: "/admin/password", 
+            data: formData,
+            type: 'post',
+            contentType: false,
+            processData: false,
+            success: function (data) {
+                if (!data.error) {
+                    toastr.success(data.message);
+                } else {
+                    toastr.error(data.message);
+                }
+            },
+            error: function (data) {
+                toastr.error(data);
+            }
+        })
+    } else {
+        toastr.error('The password is incorrect');
+    }
 });

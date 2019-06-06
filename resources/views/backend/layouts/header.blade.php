@@ -58,7 +58,7 @@
                                             <div class="m-card-user m-card-user--skin-dark">
                                                 <a href="#" class="m-nav__link m-dropdown__toggle">  
                                                     <span class="m-topbar__userpic">   
-                                                        <img src="{{ Auth::user()->avatar ? config('assets.storage') . Auth::user()->avatar : asset(config('assets.path_bower') . '/assets/app/media/img/users/user4.jpg') }}"  
+                                                        <img class="width100" src="{{ Auth::user()->avatar ? config('assets.storage') . Auth::user()->avatar : asset(config('assets.path_bower') . '/assets/app/media/img/users/user4.jpg') }}"  
                                                              class="m--img-rounded m--marginless" alt=""/>  
                                                     </span> 
                                                 </a>
@@ -76,7 +76,7 @@
                                                         <span class="m-nav__section-text">Section</span>
                                                     </li>
                                                     <li class="m-nav__item">
-                                                        <a href="#" class="m-nav__link">
+                                                        <a href="{{ asset('admin')}}/profile" class="m-nav__link">
                                                             <i class="m-nav__link-icon flaticon-profile-1"></i>
                                                             <span class="m-nav__link-title">
                                                                 <span class="m-nav__link-wrap">

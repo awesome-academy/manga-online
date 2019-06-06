@@ -7,6 +7,8 @@ use App\Repositories\UserRepository;
 use Yajra\Datatables\Datatables;
 use App\Http\Requests\UserRequest;
 use App\Http\Requests\UserUpdateRequest;
+use Auth;
+use Hash;
 
 class UserController extends Controller
 {
@@ -113,6 +115,40 @@ class UserController extends Controller
         return response()->json([
             'error' => false,
             'message' => __('trans.Edit success user'),
+        ]);
+    }
+
+    public function profile(){
+        $user = Auth::user();
+        
+        return view('backend.profile', compact('user'));    
+    }
+
+    public function updateProfile(Request $request)
+    {
+        $result = $this->userRepository->update(Auth::user()->id, $request->all());
+
+        return response()->json([
+            'error' => false,
+            'message' => __('trans.Edit success user'),
+        ]);
+    }
+
+    public function updatePassword(Request $request)
+    {
+        if (Hash::check($request->pw1, Auth::user()->password)) {
+            $data['password'] = bcrypt($request->pw2);
+            $result = $this->userRepository->update(Auth::user()->id, $data);
+
+            return response()->json([
+                'error' => false,
+                'message' => __('trans.Edit success password'),
+            ]);
+        }
+
+        return response()->json([
+            'error' => true,
+            'message' => __('trans.Edit error password'),
         ]);
     }
 }

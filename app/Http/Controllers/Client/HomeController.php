@@ -65,8 +65,7 @@ class HomeController extends Controller
 
     public function follow($id)
     {
-        if (empty(session('users')))
-        {
+        if (empty(session('users'))) {
             return response()->json([
                 'error' => true,
                 'message' => __('trans.is login'),
@@ -78,8 +77,7 @@ class HomeController extends Controller
     }
 
     public function listFollow(){
-        if (empty(session('users')))
-        {
+        if (empty(session('users'))) {
             return response()->view('errors/404');
         }
         $manganew = session('users')->mangas;

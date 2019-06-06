@@ -97,4 +97,12 @@ return [
     'Manga category' => 'Truyện theo thể loại ',
     'UnFollow' => 'Bỏ theo dõi',
     'is login' => 'Bạn cần phải đăng nhập',
+    'Update profile' => 'Cập nhật thông tin cá nhân',
+    'Change password' => 'Đổi mật khẩu',
+    'User name' => 'Tài khoản đăng nhập',
+    'Full name' => 'Họ và tên',
+    'Confirm password' => 'Xác nhận mật khẩu',
+    'New password' => 'Mật khẩu mới',
+    'Edit success password' => 'Đổi mật khẩu thành công',
+    'Edit error password' => 'Mật khẩu cũ không đúng',
 ];

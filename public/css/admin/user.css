@@ -60,3 +60,7 @@ input:checked + .slider:before {
 .dp-none{
     display: none;
 }
+.width100{
+    width: 100px;
+    border-radius: 50%;
+}
