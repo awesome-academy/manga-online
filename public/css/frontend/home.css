@@ -20,3 +20,8 @@
     width: 200px;
     height: 300px;
 }
+
+.m-topbar__language-img {
+	width: 22px;
+	border-radius: 50%;
+}

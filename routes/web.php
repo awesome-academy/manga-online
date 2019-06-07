@@ -26,8 +26,11 @@ Route::get('/manga/{manga}/{chapter}', 'Client\HomeController@getChapter')->name
 
 Route::post('/client/login/{provider}', 'Client\AuthController@loginProvider')->name('client.login');
 Route::get('/client/logout', 'Client\AuthController@logout')->name('client.logout');
+
 Route::post('/manga/comment', 'Client\HomeController@comment')->name('client.comment');
 Route::get('/follow/{id}', 'Client\HomeController@follow')->name('client.follow');
 Route::get('/follow', 'Client\HomeController@listFollow')->name('client.listfollow');
 
 Route::post('/search', 'Client\HomeController@searchFullText')->name('search');
+Route::get('/language/{lang}', 'Client\HomeController@switchLanguage')->name('client.language');
+Route::get('/profile', 'Client\ProfileController@profile')->name('client.profile');

@@ -94,4 +94,14 @@ class HomeController extends Controller
             return $data;
         }
     }
+
+    public function switchLanguage($language)
+    {
+        session([
+            'language' => $language
+        ]);
+
+        return redirect(url()->previous());
+    }
+
 }
