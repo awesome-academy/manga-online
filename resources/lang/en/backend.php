@@ -38,4 +38,7 @@ return [
     'update_status' => 'Update status',
     'active' => 'Active',
     'disable' => 'Disable',
+    'store_data' => "Update :function",
+    'success' => 'Success',
+    'error' => 'Error',
 ];

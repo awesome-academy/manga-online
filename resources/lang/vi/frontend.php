@@ -17,4 +17,12 @@ return [
         'en' => 'Tiếng anh',
     ],
     'language' => 'Ngôn ngữ',
+    'personal_details' => 'Thông tin cá nhân',
+    'fullname' => 'Họ và tên',
+    'save_changes' => 'Lưu thay đổi',
+    'cancel' => 'Huỷ bỏ',
+    'manga_name' => 'Tên truyện',
+    'recent' => 'Xem gần nhất',
+    'last_chapter' => 'Chap mới nhất',
+    'search' => 'Tìm kiếm',
 ];

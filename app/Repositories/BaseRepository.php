@@ -43,18 +43,6 @@ abstract class BaseRepository
     }
 
     /**
-     * Get one
-     * @param $id
-     * @return mixed
-     */
-    public function find($id)
-    {
-        $result = $this->_model->findOrfail($id);
-
-        return $result;
-    }
-
-    /**
      * Create
      * @param array $attributes
      * @return mixed
@@ -83,6 +71,18 @@ abstract class BaseRepository
     }
 
     /**
+     * Get one
+     * @param $id
+     * @return mixed
+     */
+    public function find($id)
+    {
+        $result = $this->_model->findOrfail($id);
+
+        return $result;
+    }
+
+    /**
      * Delete
      *
      * @param $id
@@ -98,5 +98,14 @@ abstract class BaseRepository
         }
 
         return false;
+    }
+
+    public function getAuthId()
+    {
+        if (session('users')) {
+            return session('users')->id;
+        }
+
+        return null;
     }
 }

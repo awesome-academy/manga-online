@@ -17,4 +17,12 @@ return [
         'en' => 'English',
     ],
     'language' => 'Language',
+    'personal_details' => 'Personal details',
+    'fullname' => 'Fullname',
+    'save_changes' => 'Save changes',
+    'cancel' => 'Cancel',
+    'manga_name' => 'Manga name',
+    'recent' => 'Recent',
+    'last_chapter' => 'Last chapter',
+    'search' => 'Search',
 ];

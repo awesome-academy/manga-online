@@ -11,4 +11,14 @@ class Follow extends Model
         'manga_id',
         'chapter_id',
     ];
+
+    public function manga()
+    {
+        return $this->belongsTo('App\Models\Manga');
+    }
+
+    public function chapter()
+    {
+        return $this->belongsTo('App\Models\Chapter');
+    }
 }

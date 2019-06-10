@@ -42,8 +42,9 @@
                     <div id="m_header_topbar" class="m-topbar m-stack m-stack--ver m-stack--general">
                         <div class="m-stack__item m-topbar__nav-wrapper">
                             <ul class="m-topbar__nav m-nav m-nav--inline">
-                                <li class="m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light m-list-search m-list-search--skin-light" m-dropdown-toggle="click" id="m_quicksearch"
-                                         m-quicksearch-mode="dropdown" m-dropdown-persistent="1">
+                                <li class="m-nav__item m-dropdown m-dropdown--large m-dropdown--arrow m-dropdown--align-center m-dropdown--mobile-full-width m-dropdown--skin-light m-list-search m-list-search--skin-light"
+                                    m-dropdown-toggle="click" id="m_quicksearch"
+                                    m-quicksearch-mode="dropdown" m-dropdown-persistent="1">
                                     <a href="#" class="m-nav__link m-dropdown__toggle">
                                         <span class="m-nav__link-icon"><i class="flaticon-search-1"></i></span>
                                     </a>
@@ -54,19 +55,24 @@
                                                 <form method="POST" class="m-list-search__form" id="header-search">
                                                     <div class="m-list-search__form-wrapper">
                                                         <span class="m-list-search__form-input-wrapper">
-                                                            <input type="text" name="search" class="m-list-search__form-input" placeholder="Enter Country Name" />
+                                                            <input type="text" name="search"
+                                                                   class="m-list-search__form-input"
+                                                                   placeholder="@lang('frontend.search')"/>
                                                             {{ csrf_field() }}
                                                         </span>
-                                                        <span class="m-list-search__form-icon-close" id="m_quicksearch_close">
+                                                        <span class="m-list-search__form-icon-close"
+                                                              id="m_quicksearch_close">
                                                             <i class="la la-remove"></i>
                                                         </span>
                                                     </div>
                                                 </form>
                                             </div>
                                             <div>
-                                                <div class="m-dropdown__scrollable m-scrollable" data-scrollable="true" data-height="300" data-mobile-height="200">
+                                                <div class="m-dropdown__scrollable m-scrollable" data-scrollable="true"
+                                                     data-height="300" data-mobile-height="200">
                                                     <div class="m-dropdown__content">
-                                                        <div  id="search-suggest" class="m-dropdown__header m--align-center"></div>
+                                                        <div id="search-suggest"
+                                                             class="m-dropdown__header m--align-center"></div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -156,13 +162,15 @@
                                                                 <span class="m-nav__section-text"></span>
                                                             </li>
                                                             <li class="m-nav__item">
-                                                                <a href="#" class="m-nav__link">
+                                                                <a href="{{ route('client.profile') }}"
+                                                                   class="m-nav__link">
                                                                     <i class="m-nav__link-icon flaticon-profile-1"></i>
                                                                     <span class="m-nav__link-text">@lang('frontend.profile')</span>
                                                                 </a>
                                                             </li>
                                                             <li class="m-nav__item">
-                                                                <a href="{{ asset('follow') }}" class="m-nav__link">
+                                                                <a href="{{ route('client.profile.follow') }}"
+                                                                   class="m-nav__link">
                                                                     <i class="m-nav__link-icon flaticon-layers"></i>
                                                                     <span class="m-nav__link-text">@lang('frontend.List follow')</span>
                                                                 </a>

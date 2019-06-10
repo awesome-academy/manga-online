@@ -37,12 +37,26 @@ class Manga extends Model
         return $this->belongsToMany('App\Models\TranslateGroup', 'manga_translate_group');
     }
 
-    public function chapters(){
+    public function lastChapter()
+    {
+        return $this->hasOne('App\Models\Chapter');
+    }
+
+    public function chapters()
+    {
         return $this->hasMany('App\Models\Chapter');
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany('App\Models\Comment');
+    }
+
+    public function scopeFullTextSearch($query, $columns, $term)
+    {
+        $query->whereRaw("MATCH ({$columns}) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($term));
+
+        return $query;
     }
 
     protected function fullTextWildcards($term)
@@ -52,18 +66,11 @@ class Manga extends Model
         $words = explode(' ', $term);
         foreach ($words as $key => $word) {
             if (strlen($word) >= 1) {
-                $words[$key] = '+' . $word  . '*';
+                $words[$key] = '+' . $word . '*';
             }
         }
         $searchTerm = implode(' ', $words);
 
         return $searchTerm;
-    }
-
-    public function scopeFullTextSearch($query, $columns, $term)
-    {
-        $query->whereRaw("MATCH ({$columns}) AGAINST (? IN BOOLEAN MODE)", $this->fullTextWildcards($term));
-
-        return $query;
     }
 }
