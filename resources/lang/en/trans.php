@@ -91,4 +91,10 @@ return [
     'Follow' => 'Follow',
     'Chapter' => 'Chapter',
     'Suggestions' => 'Suggestions',
+    'Backup' => 'Backup',
+    'Name file' => 'Name file',
+    'Link' => 'Link',
+    'Size' => 'Size',
+    'Backup success' => 'Backup success',
+    'Backup error' => 'Backup error',
 ];

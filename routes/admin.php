@@ -63,4 +63,9 @@ Route::middleware('auth')->group(function(){
 
     Route::get('/reports', [ReportController::class, 'index'])->name('admin.report.index');
     Route::get('/reports/all', [ReportController::class, 'dataTable'])->name('admin.report.gets');
+    Route::middleware('can:manage-role')->group(function(){
+        Route::get('/database', 'DatabaseController@index')->name('data.index');
+        Route::get('/database/getlist', 'DatabaseController@getlist')->name('data.getlist');
+        Route::get('/backup/{id}', 'DatabaseController@backup')->name('data.backup');
+    });
 });
