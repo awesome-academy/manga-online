@@ -25,4 +25,5 @@ return [
     'recent' => 'Recent',
     'last_chapter' => 'Last chapter',
     'search' => 'Search',
+    'rated' => 'You have rated',
 ];

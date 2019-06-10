@@ -41,7 +41,7 @@
                         <p class="name col-xs-4">{{ $manga->created_at->diffForHumans() }}</p>
                     </li>
                 </ul>
-                <div>{{ __('trans.Ranking') }}: <span>0</span>/ 0 - <span>0</span>{{ __('trans.Evaluate') }}.</div><br>
+                <div>{{ __('trans.Ranking') }}: <rating v-bind:manga_id="{{ $manga->id }}" v-bind:manga_rate="{{ $manga->total_rate ? $manga->rate / $manga->total_rate : 0 }}"></rating><br>
                 
                 <div>
                     @if ($status == 0)
