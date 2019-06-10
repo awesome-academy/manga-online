@@ -22,7 +22,7 @@
           type="text/css"/>
     <link href="{{ asset(config('assets.path_bower').config('assets.style_css_client')) }}"
           rel="stylesheet" type="text/css"/>
-    <link href="{{ asset('/css/admin/layouts.css') }}"
+    <link href="{{ asset('/css/frontend/layouts.css') }}"
           rel="stylesheet" type="text/css"/>
     <!--end::Global Theme Styles -->
     <!--begin::Page Vendors Styles -->

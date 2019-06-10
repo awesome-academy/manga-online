@@ -38,4 +38,7 @@ return [
     'update_status' => 'Cập nhật trạng thái',
     'active' => 'Kích hoạt',
     'disable' => 'Vô hiệu',
+    'store_data' => "Cập nhật :function",
+    'success' => 'Thành công',
+    'error' => 'Thất bại',
 ];
