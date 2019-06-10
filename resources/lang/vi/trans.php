@@ -105,4 +105,10 @@ return [
     'New password' => 'Mật khẩu mới',
     'Edit success password' => 'Đổi mật khẩu thành công',
     'Edit error password' => 'Mật khẩu cũ không đúng',
+    'Backup' => 'Dữ liệu sao lưu',
+    'Name file' => 'Tên file',
+    'Link' => 'Đường dẫn',
+    'Size' => 'Kích thước',
+    'Backup success' => 'Backup dữ liệu thành công',
+    'Backup error' => 'Backup dữ liệu thất bại',
 ];
