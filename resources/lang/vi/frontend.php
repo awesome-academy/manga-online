@@ -25,4 +25,5 @@ return [
     'recent' => 'Xem gần nhất',
     'last_chapter' => 'Chap mới nhất',
     'search' => 'Tìm kiếm',
+    'rated' => 'Bạn đã đánh giá rồi',
 ];

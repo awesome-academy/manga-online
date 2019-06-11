@@ -2,18 +2,17 @@
 
 namespace App\Http\Controllers\Client;
 
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Repositories\MangaRepository;
-use App\Repositories\CommentRepository;
 use App\Models\Manga;
+use App\Repositories\MangaRepository;
+use Illuminate\Http\Request;
 
 class HomeController extends Controller
 {
     protected $mangaRepository;
 
     public function __construct(MangaRepository $mangaRepository)
-    { 
+    {
         $this->mangaRepository = $mangaRepository;
     }
 
@@ -43,7 +42,7 @@ class HomeController extends Controller
         if (!empty(session('users'))) {
             $status = $this->mangaRepository->checkFollow($manga->id);
         }
-            
+
         return view('frontend.detail', compact('manga', 'top5view', 'suggest', 'status'));
     }
 
@@ -69,14 +68,15 @@ class HomeController extends Controller
             return response()->json([
                 'error' => true,
                 'message' => __('trans.is login'),
-            ]);  
+            ]);
         }
         $result = $this->mangaRepository->follow($id);
 
         return $result;
     }
 
-    public function listFollow(){
+    public function listFollow()
+    {
         if (empty(session('users'))) {
             return response()->view('errors/404');
         }
@@ -90,7 +90,7 @@ class HomeController extends Controller
     {
         if ($request->search != '') {
             $data = Manga::FullTextSearch('name', $request->search)->get();
-            
+
             return $data;
         }
     }
@@ -104,4 +104,25 @@ class HomeController extends Controller
         return redirect(url()->previous());
     }
 
+    public function rating(Request $request)
+    {
+        $manga = Manga::find($request->manga_id);
+        if ($manga) {
+            $manga->total_rate += 1;
+            $manga->rate += $request->rating;
+            $manga->save();
+
+            return response([
+                'status' => 'success',
+                'messages' => null,
+                'data' => null,
+            ]);
+        }
+
+        return response([
+            'status' => 'danger',
+            'messages' => null,
+            'data' => null,
+        ]);
+    }
 }

@@ -55,7 +55,7 @@
     <!-- end::Header -->
     <div class="mgtop100 m-grid__item m-grid__item--fluid m-grid m-grid--ver-desktop m-grid--desktop m-page__container m-body">
         <div class="m-grid__item m-grid__item--fluid m-wrapper">
-            <div class="m-content">
+            <div class="m-content" id="app">
                 @yield('content')
             </div>
         </div>
@@ -82,7 +82,8 @@
         type="text/javascript"></script>
 <script src="{{ asset('/js/client/main.js') }}"
         type="text/javascript"></script>
-
+<script src="{{ asset('/js/lang.js') }}" type="text/javascript"></script>
+<script src="{{ asset('js/app.js') }}" defer></script>
 <!--end::Page Vendors -->
 <!--begin::Page Scripts -->
 @yield('js_init')
