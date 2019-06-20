@@ -58,9 +58,15 @@ class LoginController extends Controller
         $credentials = $request->only('email', 'password');
         if (Auth::attempt($credentials)) {
             // Authentication passed...
+            if (Auth::user()->role_id == 3) {
+                $redirectTo = route('client.home');
+            }else {
+                $redirectTo = route('admin.profile');
+            }
+            
             return response()->json([
                 'status' => 'success',
-                'redirectTo' => $this->redirectTo,
+                'redirectTo' => $redirectTo,
             ]);
         } else {
             return response()->json([

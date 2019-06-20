@@ -9,8 +9,8 @@
             <tr>
                 <th>#</th>
                 <th>@lang('frontend.manga_name')</th>
-                <th>@lang('frontend.recent')</th>
-                <th>@lang('frontend.last_chapter')</th>
+                <th>@lang('trans.Description')</th>
+                <th>@lang('trans.View')</th>
             </tr>
             </thead>
             <tbody>
@@ -19,22 +19,17 @@
                     <th scope="row">{{ $loop->iteration }}</th>
                     <td>
                         <a class="m-link"
-                           href="{{ route('client.getmanga', ['slug' => $manga->manga->slug]) }}">{{ $manga->manga->name }}</a>
+                           href="{{ '/manga/' . $manga->slug }}">{{ $manga->name }}</a>
                     </td>
                     <td>
-                        <a class="m-link"
-                           href="{{ route('client.getChapter', ['manga' => $manga->manga->slug, 'chapter' => $manga->chapter->slug]) }}">{{ $manga->chapter->name }}</a><br>
-                        <span>{{ $manga->updated_at->diffForHumans() }}</span>
+                        <span>{{ $manga->description }}</span>
                     </td>
                     <td>
-                        <a class="m-link"
-                           href="{{ route('client.getChapter', ['manga' => $manga->manga->slug, 'chapter' => $manga->manga->lastChapter->slug]) }}">{{ $manga->manga->lastChapter->name }}</a><br>
-                        <span>{{ $manga->manga->lastChapter->created_at->diffForHumans() }}</span>
+                        <span>{{ $manga->view }}</span>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
-        {{ $mangas->links() }}
     </div>
 @endsection

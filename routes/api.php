@@ -18,3 +18,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::post('/manga_rating', 'Client\HomeController@rating');
+Route::get('/messages', 'Client\MessagesController@getMessages');
+Route::post('/messages', 'Client\MessagesController@sendMessage');

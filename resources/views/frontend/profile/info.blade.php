@@ -23,7 +23,7 @@
                 <label for="fullname" class="col-2 col-form-label">@lang('frontend.fullname')</label>
                 <div class="col-7">
                     <input id="fullname" name="fullname" class="form-control m-input" type="text"
-                           value="{{ $user->fullname }}" placeholder="@lang('auth.fullname_plh')">
+                           value="{{ Auth::user()->fullname }}" placeholder="@lang('auth.fullname_plh')">
                 </div>
             </div>
         </div>
@@ -43,6 +43,6 @@
                 </div>
             </div>
         </div>
-        <input type="hidden" name="_id" value="{{ session('users')->id }}">
+        <input type="hidden" name="_id" value="{{ Auth::user()->id }}">
     </form>
 @endsection

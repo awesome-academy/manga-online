@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Manga;
 use App\Repositories\MangaRepository;
 use Illuminate\Http\Request;
+use Auth;
 
 class HomeController extends Controller
 {
@@ -64,7 +65,8 @@ class HomeController extends Controller
 
     public function follow($id)
     {
-        if (empty(session('users'))) {
+        if (empty(Auth::user())) {
+
             return response()->json([
                 'error' => true,
                 'message' => __('trans.is login'),
@@ -72,15 +74,22 @@ class HomeController extends Controller
         }
         $result = $this->mangaRepository->follow($id);
 
-        return $result;
+        if ($result) {
+
+            return __('trans.Is follow');
+        } else {
+
+            return __('trans.unfollow');
+        }
     }
 
     public function listFollow()
     {
-        if (empty(session('users'))) {
+        if (empty(Auth::user())) {
+            
             return response()->view('errors/404');
         }
-        $manganew = session('users')->mangas;
+        $manganew = Auth::user()->mangas;
         $top5view = $this->mangaRepository->getTopView(config('assets.top5'));
 
         return view('frontend.follow', compact('manganew', 'top5view'));

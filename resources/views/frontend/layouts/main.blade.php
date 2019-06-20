@@ -60,6 +60,7 @@
             </div>
         </div>
     </div>
+    @include('frontend.layouts.footer')
 </div>
 
 <!-- begin::Scroll Top -->
@@ -83,7 +84,7 @@
 <script src="{{ asset('/js/client/main.js') }}"
         type="text/javascript"></script>
 <script src="{{ asset('/js/lang.js') }}" type="text/javascript"></script>
-<script src="{{ asset('js/app.js') }}" defer></script>
+<script src="{{ asset('/js/app.js') }}" defer></script>
 <!--end::Page Vendors -->
 <!--begin::Page Scripts -->
 @yield('js_init')

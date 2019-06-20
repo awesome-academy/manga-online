@@ -9,6 +9,7 @@ use App\Models\AuthorManga;
 use App\Models\Chapter;
 use App\Models\Comment;
 use App\Models\Follow;
+use Auth;
 
 class MangaRepository extends BaseRepository
 {
@@ -114,7 +115,7 @@ class MangaRepository extends BaseRepository
         }
         $manga->count_comment = $manga->count_comment + 1;
         $manga->save();
-        $data['user_id'] = session('users')->id;
+        $data['user_id'] = Auth::user()->id;
         $data['type'] = 1;
         $result = Comment::create($data);
         $result['username'] = $result->user->fullname;
@@ -125,24 +126,28 @@ class MangaRepository extends BaseRepository
 
     public function follow($id)
     {
-        $follow = Follow::where('user_id', session('users')->id)->where('manga_id', $id)->first();
+        $follow = Follow::where('user_id', Auth::user()->id)->where('manga_id', $id)->first();
         if ($follow == null) {
-            $data['user_id'] = session('users')->id;
+            $data['user_id'] = Auth::user()->id;
             $data['manga_id'] = $id;
             $data['chapter_id'] = 1;
             $result = Follow::create($data);
         } else {
             $follow->delete();
+
+            return false;
         }
 
-        return 0;
+        return true;
     }
 
     public function checkFollow($manga_id){
-        $follow = Follow::where('user_id', session('users')->id)->where('manga_id', $manga_id)->first();
-        if ($follow == null) {     
+        $follow = Follow::where('user_id', Auth::user()->id)->where('manga_id', $manga_id)->first();
+        if ($follow == null) {
+
             return 0;
         } else {
+            
             return 1;
         }
     }
