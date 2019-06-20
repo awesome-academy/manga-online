@@ -132,7 +132,7 @@
 
         </div>
     </div>
-
+    </div>
     <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4 m-portlet" id="menuright">
         <div class="m-portlet__body"> 
             <h4 class="m--font-info">{{ __('trans.Top view manga') }}</h4><br>
