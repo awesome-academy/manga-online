@@ -11,5 +11,6 @@ return [
         'profile' => [
             'follow' => 10,
         ],
+        'massages' => 10,
     ],
 ];

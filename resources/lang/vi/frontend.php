@@ -26,4 +26,7 @@ return [
     'last_chapter' => 'Chap mới nhất',
     'search' => 'Tìm kiếm',
     'rated' => 'Bạn đã đánh giá rồi',
+    'type_here' => 'Nhập tin nhắn...',
+    'chatting' => 'Phòng tán gẫu',
+    'empty_chat' => 'Bạn chưa nhập nội dung',
 ];
