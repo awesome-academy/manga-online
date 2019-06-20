@@ -23,6 +23,7 @@ import StarRating from 'vue-star-rating'
 Vue.component('example-component', require('./components/ExampleComponent.vue').default);
 Vue.component('rating', require('./components/RatingManga').default);
 Vue.component('star-rating', StarRating);
+Vue.component('chat-room', require('./components/ChatRoom/Layouts').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

@@ -26,4 +26,7 @@ return [
     'last_chapter' => 'Last chapter',
     'search' => 'Search',
     'rated' => 'You have rated',
+    'type_here' => 'Type here...',
+    'chatting' => 'Chatting',
+    'empty_chat' => 'Empty content',
 ];
