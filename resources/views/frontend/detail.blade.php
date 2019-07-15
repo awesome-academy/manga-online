@@ -49,7 +49,6 @@
                     @else
                     <p class="follow-link btn btn-warning" onclick="follow({{ $manga->id }})"><i class="fas fa-minus-square"></i> {{ __('trans.UnFollow') }}</p>
                     @endif
-                    <!-- <span><b> 0 </b> {{ __('trans.Follow') }}</span> -->
                 </div>
             </div><br><br>
         </div><br>
@@ -77,13 +76,17 @@
                 @endforeach
             </tbody>
         </table>
-        <div class="m-portlet__body">
+        
+        <div class="m-portlet__body width100">
+            @if(empty($manga->chapters[0]))
+                <h5 class="text-center">{{ __('trans.No chapter') }}</h5>
+            @endif
             <div class="m-widget3">
                 @foreach ($manga->comments as $comment)
                 <div class="m-widget3__item">
                     <div class="m-widget3__header">
                         <div class="m-widget3__user-img">
-                            <img class="m-widget3__img" src="{{ $comment->user->avatar }}" alt="">
+                            <img class="m-widget3__img" src="{{ '/storage' . $comment->user->avatar }}" alt="">
                         </div>
                         <div class="m-widget3__info">
                             <span class="m-widget3__username">
@@ -103,20 +106,27 @@
                 @endforeach
                 <div id="append"></div>
 
-                @if (!empty(session('users')))
+                @if (!empty(Auth::user()))
                 <div class="m-widget3__item">
                     <div class="m-widget3__header">
                         <div class="m-widget3__user-img">
-                            <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}" class="m-widget3__img" alt=""/>
+                            @if(isset(Auth::user()->avatar))
+                                <img class="m-widget3__img" src="{{ '/storage' . Auth::user()->avatar }}"
+                                     alt=""/>
+                            @else
+                                <img class="m-widget3__img" src="{{ asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                     alt=""/>
+                            @endif
+
                         </div>
                         <div class="m-widget3__info">
                             <span class="m-widget3__username">
-                                {{ session('users')->fullname }}
+                                {{ Auth::user()->fullname }}
                             </span><br>
                         </div>
                     </div>
                     <div class="m-widget3__body">
-                        <form action="" id="comment" method="POST" role="form">
+                        <form action="" id="comment" method="post" role="form">
                             @csrf
                             <p class="m-widget3__text">
                                 <textarea class="form-control m-input" name="content" id="exampleTextarea" rows="2"></textarea>

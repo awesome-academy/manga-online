@@ -26,4 +26,7 @@ return [
     'last_chapter' => 'Last chapter',
     'search' => 'Search',
     'rated' => 'You have rated',
+    'About' => 'About',
+    'Support' => 'Support',
+    'Copyright' => 'Copyright 2019 &copy; Designed by Manga mega',
 ];

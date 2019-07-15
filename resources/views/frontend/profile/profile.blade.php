@@ -8,13 +8,18 @@
                     <div class="m-card-profile">
                         <div class="m-card-profile__pic">
                             <div class="m-card-profile__pic-wrapper">
-                                <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                @if(isset(Auth::user()->avatar))
+                                    <img src="{{ '/storage' . Auth::user()->avatar }}"
                                      alt=""/>
+                                @else
+                                    <img src="{{ asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                     alt=""/>
+                                @endif
                             </div>
                         </div>
                         <div class="m-card-profile__details">
-                            <span class="m-card-profile__name">{{ session('users')->fullname }}</span>
-                            <a href="" class="m-card-profile__email m-link">{{ session('users')->email }}</a>
+                            <span class="m-card-profile__name">{{ Auth::user()->fullname }}</span>
+                            <a href="" class="m-card-profile__email m-link">{{ Auth::user()->email }}</a>
                         </div>
                     </div>
                     <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">

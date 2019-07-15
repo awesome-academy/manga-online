@@ -19,7 +19,7 @@
                         <div class="m-stack__item m-stack__item--middle m-brand__tools">
                             <!-- begin::Quick Actions-->
                             <a href="/" class="btn btn-link m-btn m-btn--icon m-btn--pill m-link">
-                                <span>@lang('frontend.home')</span>
+                                <h6>@lang('frontend.home')</h6>
                             </a>
                             <!-- begin::Responsive Header Menu Toggler-->
                             <a id="m_aside_header_menu_mobile_toggle" href="javascript:;"
@@ -114,24 +114,51 @@
                                         </div>
                                     </div>
                                 </li>
-                                @if(empty(session('users')))
-                                    <li class="m-nav__item m-nav__item--primary m-dropdown m-dropdown--skin-light m-dropdown--large m-dropdown--arrow m-dropdown--align-right m-dropdown--align-push m-dropdown--mobile-full-width m-dropdown--skin-light"
-                                        m-dropdown-toggle="click">
-                                        <a href="javascript:void(0);" class="m-nav__link" id="login_facebook_btn"
-                                           route="{{ route('client.login', ['provider' => 'facebook']) }}">
-                                            <span class="m-nav__link-badge m-badge m-badge--dot m-badge--info m--hide"></span>
-                                            <span class="m-nav__link-icon"><span class="m-nav__link-icon-wrapper"><i
-                                                            class="flaticon-facebook-letter-logo"></i></span></span>
-                                        </a>
-                                    </li>
+                                <li class="m-nav__item m-dropdown m-dropdown--small m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
+                                    m-dropdown-toggle="click">
+                                    <a href="#" class="m-nav__link m-dropdown__toggle">
+                                        <h6 class="m-topbar__userpic">
+                                            {{ __('trans.Category') }}
+                                        </h6>
+                                    </a>
+                                    <div class="m-dropdown__wrapper">
+                                        <span class="m-dropdown__arrow m-dropdown__arrow--right m-dropdown__arrow--adjust"></span>
+                                        <div class="m-dropdown__inner">
+                                            <div class="m-dropdown__body">
+                                                <div class="m-dropdown__content">
+                                                    <ul class="m-nav m-nav--skin-light">
+                                                        @foreach ($categories as $category)   
+                                                        <span><button type="button" class="mg2 btn m-btn m-btn--gradient-from-danger"><a href="{{ asset('category') }}/{{ $category->slug }}">{{ $category->name }}</a></button></span>
+                                                        @endforeach
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                @if(empty(Auth::user()))
+                                <li class="m-nav__item m-dropdown m-dropdown--small m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
+                                    m-dropdown-toggle="click">
+                                    <a href="{{ asset('/user/login') }}" class="m-nav__link">
+                                        <h6 class="m-topbar__userpic">
+                                            {{ __('trans.Login') }}
+                                        </h6>
+                                    </a>
+                                </li>
                                 @else
                                     <li class="m-nav__item m-dropdown m-dropdown--medium m-dropdown--arrow m-dropdown--align-right m-dropdown--mobile-full-width m-dropdown--skin-light"
                                         m-dropdown-toggle="click">
                                         <a href="#" class="m-nav__link m-dropdown__toggle">
                                         <span class="m-topbar__userpic">
-                                            <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                            @if(isset(Auth::user()->avatar))
+                                            <img src="{{ '/storage' . Auth::user()->avatar }}"
                                                  class="m--img-rounded m--marginless m--img-centered"
                                                  alt=""/>
+                                            @else
+                                                <img src="{{ asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                                 class="m--img-rounded m--marginless m--img-centered"
+                                                 alt=""/>
+                                            @endif
                                         </span>
                                             <span class="m-nav__link-icon m-topbar__usericon m--hide">
                                             <span class="m-nav__link-icon-wrapper"><i
@@ -145,13 +172,13 @@
                                                 <div class="m-dropdown__header m--align-center">
                                                     <div class="m-card-user m-card-user--skin-light">
                                                         <div class="m-card-user__pic">
-                                                            <img src="{{ session('users')->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
+                                                            <img src="{{ Auth::user()->avatar ?? asset(config('assets.path_bower') . '/demo10/assets/app/media/img/users/user4.jpg') }}"
                                                                  class="m--img-rounded m--marginless" alt=""/>
                                                         </div>
                                                         <div class="m-card-user__details">
-                                                            <span class="m-card-user__name m--font-weight-500">{{ session('users')->fullname }}</span>
+                                                            <span class="m-card-user__name m--font-weight-500">{{ Auth::user()->fullname }}</span>
                                                             <a href=""
-                                                               class="m-card-user__email m--font-weight-300 m-link">{{ session('users')->email }}</a>
+                                                               class="m-card-user__email m--font-weight-300 m-link">{{ Auth::user()->email }}</a>
                                                         </div>
                                                     </div>
                                                 </div>

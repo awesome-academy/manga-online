@@ -8,18 +8,21 @@ use App\Repositories\MangaRepository;
 use App\Repositories\UserRepository;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Auth;
 
 class ProfileController extends Controller
 {
+    protected $userRepository;
+
     public function __construct(UserRepository $userRepository, MangaRepository $mangaRepository)
     {
-        $this->UserRepository = $userRepository;
+        $this->userRepository = $userRepository;
         $this->MangaRepository = $mangaRepository;
     }
 
     public function profile()
     {
-        $user = session('users');
+        $user = Auth::user();
 
         return view('frontend.profile.info', [
             'user' => $user,
@@ -28,9 +31,9 @@ class ProfileController extends Controller
 
     public function saveProfile(Request $request)
     {
-        $result = User::find($request->_id)->update($request->all());
+        $result = $this->userRepository->update(Auth::user()->id, $request->all());
         if ($result) {
-            session('users')->fullname = $request->fullname;
+            Auth::user()->fullname = $request->fullname;
 
             return redirect(url()->previous())->with([
                 'response' => [
@@ -52,14 +55,12 @@ class ProfileController extends Controller
 
     public function mangaFollow()
     {
-        $mangas = Follow::with(['manga' => function ($query) {
-            $query->with(['lastChapter' => function ($query) {
-                $query->latest()->first();
-            }]);
-        }, 'chapter'])->where('user_id', $this->UserRepository->getAuthId())->latest()->paginate(config('paginate.client.profile.follow'));
+        if (empty(Auth::user())) {
 
-        return view('frontend.profile.follow', [
-            'mangas' => $mangas,
-        ]);
+            return response()->view('errors/404');
+        }
+        $mangas = Auth::user()->mangas;
+
+        return view('frontend.profile.follow', ['mangas' => $mangas]);
     }
 }

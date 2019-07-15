@@ -26,4 +26,7 @@ return [
     'last_chapter' => 'Chap mới nhất',
     'search' => 'Tìm kiếm',
     'rated' => 'Bạn đã đánh giá rồi',
+    'About' => 'Liên hệ',
+    'Support' => 'Hỗ trợ',
+    'Copyright' => 'Copyright 2019 &copy; Designed by Manga mega',
 ];

@@ -111,4 +111,9 @@ return [
     'Size' => 'Kích thước',
     'Backup success' => 'Backup dữ liệu thành công',
     'Backup error' => 'Backup dữ liệu thất bại',
+    'Manage database' => 'Quản lý dữ liệu',
+    'Is follow' => 'Đã theo dõi',
+    'unfollow' => 'Bỏ theo dõi',
+    'Login' => 'Đăng nhập',
+    'No chapter' => 'Không có chương truyện nào ...',
 ];

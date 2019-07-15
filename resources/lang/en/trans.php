@@ -97,4 +97,9 @@ return [
     'Size' => 'Size',
     'Backup success' => 'Backup success',
     'Backup error' => 'Backup error',
+    'Manage database' => 'Manage database',
+    'Is follow' => 'Is follow',
+    'unfollow' => 'unfollow',
+    'Login' => 'Login',
+    'No chapter' => 'No chapter',
 ];
